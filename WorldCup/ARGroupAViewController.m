@@ -35,6 +35,13 @@
     [self setUpMatches];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"enableSidebar" object:nil];    
+}
+
+
 #pragma mark - Table View data source
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -64,6 +71,8 @@
         ARMatchDetailViewController *mdvc = (ARMatchDetailViewController *)segue.destinationViewController;
         
         mdvc.match = match;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"disableSidebar" object:nil];
     }
 }
 

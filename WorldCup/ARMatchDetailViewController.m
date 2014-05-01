@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *awayTeamButton;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-
+@property (nonatomic, strong) UIPanGestureRecognizer *panRecognizer;
 @end
 
 @implementation ARMatchDetailViewController
@@ -33,6 +33,30 @@
     [self findMatchTime];
     [self printMatchTime];
 }
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self setupPanGesture];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.view removeGestureRecognizer:_panRecognizer];
+}
+
+- (void)setupPanGesture
+{
+    _panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self.navigationController action:@selector(popViewControllerAnimated:)];
+    
+    _panRecognizer.minimumNumberOfTouches = 1;
+    _panRecognizer.maximumNumberOfTouches = 1;
+    
+    [self.view addGestureRecognizer:_panRecognizer];
+
+}
+
 - (IBAction)homeTeamWin:(id)sender
 {
     _homeTeamImageView.image = [UIImage imageNamed:@"win.png"];

@@ -17,8 +17,8 @@
 @property (strong,nonatomic) NSArray *arrayOfViewControllers;
 @property (strong,nonatomic) UIViewController *topViewController;
 @property (strong,nonatomic) UITapGestureRecognizer *tapToClose;
+@property (nonatomic, strong) UIPanGestureRecognizer *panRecognizer;
 @property (nonatomic) BOOL menuIsOpen;
-
 @end
 
 @implementation ARRootMenuViewController
@@ -36,7 +36,24 @@
     [self setUpChildViewControllers];
     
     [self setUpDrag];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(enableSidebar) name:@"enableSidebar" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disableSidebar) name:@"disableSidebar" object:nil];
 
+    
+
+}
+
+- (void)enableSidebar
+{
+    NSLog(@"Enabling Sidebar");
+    [_panRecognizer setEnabled:YES];
+}
+
+- (void)disableSidebar
+{
+    NSLog(@"Disabling Sidebar");
+    [_panRecognizer setEnabled:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -96,14 +113,14 @@
 
 - (void)setUpDrag
 {
-    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(movePanel:)];
+    _panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(movePanel:)];
     
-    panRecognizer.minimumNumberOfTouches = 1;
-    panRecognizer.maximumNumberOfTouches = 1;
+    _panRecognizer.minimumNumberOfTouches = 1;
+    _panRecognizer.maximumNumberOfTouches = 1;
     
-    panRecognizer.delegate = self;
+    _panRecognizer.delegate = self;
     
-    [self.view addGestureRecognizer:panRecognizer];
+    [self.view addGestureRecognizer:_panRecognizer];
 }
 
 - (void)movePanel:(id)sender
@@ -152,7 +169,7 @@
     } completion:^(BOOL finished) {
         [_topViewController.view removeGestureRecognizer:_tapToClose];
         _menuIsOpen = NO;
-    }];
+    }];        
 }
 
 -(void)switchToViewControllerAtIndexPath:(NSIndexPath *)indexPath
@@ -168,7 +185,7 @@
         _topViewController = _arrayOfViewControllers[indexPath.row];
         [self addChildViewController:_topViewController];
         _topViewController.view.frame = offScreen;
-        
+                
         [self.view addSubview:_topViewController.view];
         
         [_topViewController didMoveToParentViewController:self];
