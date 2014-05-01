@@ -14,18 +14,21 @@
 		3A40E9CE190EE5AB00B6AB03 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A40E9CD190EE5AB00B6AB03 /* main.m */; };
 		3A40E9D2190EE5AB00B6AB03 /* ARAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A40E9D1190EE5AB00B6AB03 /* ARAppDelegate.m */; };
 		3A40E9D5190EE5AB00B6AB03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A40E9D3190EE5AB00B6AB03 /* Main.storyboard */; };
-		3A40E9DA190EE5AB00B6AB03 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A40E9D9190EE5AB00B6AB03 /* Images.xcassets */; };
 		3A40E9E1190EE5AB00B6AB03 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A40E9E0190EE5AB00B6AB03 /* XCTest.framework */; };
 		3A40E9E2190EE5AB00B6AB03 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A40E9C1190EE5AB00B6AB03 /* Foundation.framework */; };
 		3A40E9E3190EE5AB00B6AB03 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A40E9C5190EE5AB00B6AB03 /* UIKit.framework */; };
 		3A40E9EB190EE5AB00B6AB03 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A40E9E9190EE5AB00B6AB03 /* InfoPlist.strings */; };
 		3A40E9ED190EE5AB00B6AB03 /* WorldCupTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A40E9EC190EE5AB00B6AB03 /* WorldCupTests.m */; };
-		3A40E9FB190EE68900B6AB03 /* ARGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A40E9FA190EE68900B6AB03 /* ARGroupTableViewController.m */; };
-		3AB08D5B190EF1F1009ABA2C /* ARGroupMatchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB08D5A190EF1F1009ABA2C /* ARGroupMatchesViewController.m */; };
 		3AB08D67190F1067009ABA2C /* ARMatchDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB08D66190F1067009ABA2C /* ARMatchDetailViewController.m */; };
 		3AB08D6A190F28B1009ABA2C /* ARMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB08D69190F28B1009ABA2C /* ARMatch.m */; };
-		3AB08D6D190F37C2009ABA2C /* ARTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB08D6C190F37C2009ABA2C /* ARTeam.m */; };
 		3AB08D7019101C40009ABA2C /* ARCountdownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB08D6F19101C40009ABA2C /* ARCountdownViewController.m */; };
+		3AB08D7819117946009ABA2C /* ARRootMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB08D7719117946009ABA2C /* ARRootMenuViewController.m */; };
+		3AB08D7C191184AC009ABA2C /* ARGroupAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB08D7B191184AC009ABA2C /* ARGroupAViewController.m */; };
+		3AB08D8F1911AE0F009ABA2C /* original.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3AB08D8E1911AE0F009ABA2C /* original.jpg */; };
+		3AB08D981912C26A009ABA2C /* lose.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AB08D951912C26A009ABA2C /* lose.png */; };
+		3AB08D991912C26A009ABA2C /* win.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AB08D961912C26A009ABA2C /* win.png */; };
+		3AB08D9C1912CFB7009ABA2C /* ARGroupBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB08D9B1912CFB7009ABA2C /* ARGroupBViewController.m */; };
+		3AB08DA01912D7FB009ABA2C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AB08D9F1912D7FB009ABA2C /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,24 +53,27 @@
 		3A40E9D0190EE5AB00B6AB03 /* ARAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARAppDelegate.h; sourceTree = "<group>"; };
 		3A40E9D1190EE5AB00B6AB03 /* ARAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARAppDelegate.m; sourceTree = "<group>"; };
 		3A40E9D4190EE5AB00B6AB03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3A40E9D9190EE5AB00B6AB03 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3A40E9DF190EE5AB00B6AB03 /* WorldCupTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorldCupTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A40E9E0190EE5AB00B6AB03 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		3A40E9E8190EE5AB00B6AB03 /* WorldCupTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WorldCupTests-Info.plist"; sourceTree = "<group>"; };
 		3A40E9EA190EE5AB00B6AB03 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3A40E9EC190EE5AB00B6AB03 /* WorldCupTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorldCupTests.m; sourceTree = "<group>"; };
-		3A40E9F9190EE68900B6AB03 /* ARGroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARGroupTableViewController.h; sourceTree = "<group>"; };
-		3A40E9FA190EE68900B6AB03 /* ARGroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARGroupTableViewController.m; sourceTree = "<group>"; };
-		3AB08D59190EF1F1009ABA2C /* ARGroupMatchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARGroupMatchesViewController.h; sourceTree = "<group>"; };
-		3AB08D5A190EF1F1009ABA2C /* ARGroupMatchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARGroupMatchesViewController.m; sourceTree = "<group>"; };
 		3AB08D65190F1067009ABA2C /* ARMatchDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARMatchDetailViewController.h; sourceTree = "<group>"; };
 		3AB08D66190F1067009ABA2C /* ARMatchDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARMatchDetailViewController.m; sourceTree = "<group>"; };
 		3AB08D68190F28B1009ABA2C /* ARMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARMatch.h; sourceTree = "<group>"; };
 		3AB08D69190F28B1009ABA2C /* ARMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARMatch.m; sourceTree = "<group>"; };
-		3AB08D6B190F37C2009ABA2C /* ARTeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTeam.h; sourceTree = "<group>"; };
-		3AB08D6C190F37C2009ABA2C /* ARTeam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTeam.m; sourceTree = "<group>"; };
 		3AB08D6E19101C40009ABA2C /* ARCountdownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCountdownViewController.h; sourceTree = "<group>"; };
 		3AB08D6F19101C40009ABA2C /* ARCountdownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARCountdownViewController.m; sourceTree = "<group>"; };
+		3AB08D7619117946009ABA2C /* ARRootMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRootMenuViewController.h; sourceTree = "<group>"; };
+		3AB08D7719117946009ABA2C /* ARRootMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRootMenuViewController.m; sourceTree = "<group>"; };
+		3AB08D7A191184AC009ABA2C /* ARGroupAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARGroupAViewController.h; sourceTree = "<group>"; };
+		3AB08D7B191184AC009ABA2C /* ARGroupAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARGroupAViewController.m; sourceTree = "<group>"; };
+		3AB08D8E1911AE0F009ABA2C /* original.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = original.jpg; sourceTree = "<group>"; };
+		3AB08D951912C26A009ABA2C /* lose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lose.png; sourceTree = "<group>"; };
+		3AB08D961912C26A009ABA2C /* win.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = win.png; sourceTree = "<group>"; };
+		3AB08D9A1912CFB7009ABA2C /* ARGroupBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARGroupBViewController.h; sourceTree = "<group>"; };
+		3AB08D9B1912CFB7009ABA2C /* ARGroupBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARGroupBViewController.m; sourceTree = "<group>"; };
+		3AB08D9F1912D7FB009ABA2C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,20 +135,20 @@
 			children = (
 				3A40E9D0190EE5AB00B6AB03 /* ARAppDelegate.h */,
 				3A40E9D1190EE5AB00B6AB03 /* ARAppDelegate.m */,
-				3A40E9D3190EE5AB00B6AB03 /* Main.storyboard */,
+				3AB08D7619117946009ABA2C /* ARRootMenuViewController.h */,
+				3AB08D7719117946009ABA2C /* ARRootMenuViewController.m */,
 				3AB08D6E19101C40009ABA2C /* ARCountdownViewController.h */,
 				3AB08D6F19101C40009ABA2C /* ARCountdownViewController.m */,
-				3A40E9F9190EE68900B6AB03 /* ARGroupTableViewController.h */,
-				3A40E9FA190EE68900B6AB03 /* ARGroupTableViewController.m */,
-				3AB08D59190EF1F1009ABA2C /* ARGroupMatchesViewController.h */,
-				3AB08D5A190EF1F1009ABA2C /* ARGroupMatchesViewController.m */,
+				3AB08D7A191184AC009ABA2C /* ARGroupAViewController.h */,
+				3AB08D7B191184AC009ABA2C /* ARGroupAViewController.m */,
+				3AB08D9A1912CFB7009ABA2C /* ARGroupBViewController.h */,
+				3AB08D9B1912CFB7009ABA2C /* ARGroupBViewController.m */,
 				3AB08D65190F1067009ABA2C /* ARMatchDetailViewController.h */,
 				3AB08D66190F1067009ABA2C /* ARMatchDetailViewController.m */,
+				3A40E9D3190EE5AB00B6AB03 /* Main.storyboard */,
 				3AB08D68190F28B1009ABA2C /* ARMatch.h */,
 				3AB08D69190F28B1009ABA2C /* ARMatch.m */,
-				3AB08D6B190F37C2009ABA2C /* ARTeam.h */,
-				3AB08D6C190F37C2009ABA2C /* ARTeam.m */,
-				3A40E9D9190EE5AB00B6AB03 /* Images.xcassets */,
+				3AB08D9F1912D7FB009ABA2C /* Images.xcassets */,
 				3A40E9C8190EE5AB00B6AB03 /* Supporting Files */,
 			);
 			path = WorldCup;
@@ -151,6 +157,9 @@
 		3A40E9C8190EE5AB00B6AB03 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3AB08D951912C26A009ABA2C /* lose.png */,
+				3AB08D961912C26A009ABA2C /* win.png */,
+				3AB08D8E1911AE0F009ABA2C /* original.jpg */,
 				3A40E9C9190EE5AB00B6AB03 /* WorldCup-Info.plist */,
 				3A40E9CA190EE5AB00B6AB03 /* InfoPlist.strings */,
 				3A40E9CD190EE5AB00B6AB03 /* main.m */,
@@ -254,7 +263,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A40E9DA190EE5AB00B6AB03 /* Images.xcassets in Resources */,
+				3AB08D8F1911AE0F009ABA2C /* original.jpg in Resources */,
+				3AB08DA01912D7FB009ABA2C /* Images.xcassets in Resources */,
+				3AB08D981912C26A009ABA2C /* lose.png in Resources */,
+				3AB08D991912C26A009ABA2C /* win.png in Resources */,
 				3A40E9CC190EE5AB00B6AB03 /* InfoPlist.strings in Resources */,
 				3A40E9D5190EE5AB00B6AB03 /* Main.storyboard in Resources */,
 			);
@@ -276,13 +288,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AB08D6A190F28B1009ABA2C /* ARMatch.m in Sources */,
+				3AB08D9C1912CFB7009ABA2C /* ARGroupBViewController.m in Sources */,
 				3AB08D7019101C40009ABA2C /* ARCountdownViewController.m in Sources */,
 				3A40E9CE190EE5AB00B6AB03 /* main.m in Sources */,
-				3AB08D5B190EF1F1009ABA2C /* ARGroupMatchesViewController.m in Sources */,
-				3A40E9FB190EE68900B6AB03 /* ARGroupTableViewController.m in Sources */,
+				3AB08D7C191184AC009ABA2C /* ARGroupAViewController.m in Sources */,
+				3AB08D7819117946009ABA2C /* ARRootMenuViewController.m in Sources */,
 				3AB08D67190F1067009ABA2C /* ARMatchDetailViewController.m in Sources */,
 				3A40E9D2190EE5AB00B6AB03 /* ARAppDelegate.m in Sources */,
-				3AB08D6D190F37C2009ABA2C /* ARTeam.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

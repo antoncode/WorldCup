@@ -7,13 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ARTeam.h"
 
 @interface ARMatch : NSObject
 
-@property (nonatomic, strong) ARTeam *homeTeam, *awayTeam;
-@property (nonatomic, strong) NSString *matchString, *arena, *group;
-@property (nonatomic, strong) NSDate *time, *date;
-
+@property (nonatomic, strong) NSString *homeTeamName, *awayTeamName, *matchString, *matchTime;
+//@property (nonatomic, strong) NSDate *time, *date;
 
 @end

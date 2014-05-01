@@ -9,12 +9,13 @@
 #import "ARMatchDetailViewController.h"
 
 @interface ARMatchDetailViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *matchStringLabel;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *homeTeamImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *awayTeamImageView;
+@property (weak, nonatomic) IBOutlet UIButton *homeTeamButton;
+@property (weak, nonatomic) IBOutlet UIButton *awayTeamButton;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *arenaLabel;
-@property (weak, nonatomic) IBOutlet UILabel *groupLabel;
-@property (nonatomic) NSDictionary *matchDictionary;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 @end
 
@@ -26,39 +27,43 @@
     
     self.navigationItem.title = _match.matchString;
     
-    [self findMatchDetail];
+    [_homeTeamButton setTitle:_match.homeTeamName forState:UIControlStateNormal];
+    [_awayTeamButton setTitle:_match.awayTeamName forState:UIControlStateNormal];
     
-    [self printMatchDetail];
+    [self findMatchTime];
+    [self printMatchTime];
 }
-
-- (void)findMatchDetail
+- (IBAction)homeTeamWin:(id)sender
 {
-    if ([_match.matchString isEqualToString:@"Brazil vs Croatia"]) {
-//        _match.time = @"1:00pm";
-//        _match.date = @"Jun 12, 2014";
-        _match.arena = @"Arena de Sao Paulo";
-        _match.group = @"Group A";
-    } else if ([_match.matchString isEqualToString:@"Brazil vs Mexico"]) {
-//        _match.time = @"12:00pm";
-//        _match.date = @"Jun 17, 2014";
-        _match.arena = @"Estadio Castelao";
-        _match.group = @"Group A";
-    } 
+    _homeTeamImageView.image = [UIImage imageNamed:@"win.png"];
+    _awayTeamImageView.image = [UIImage imageNamed:@"lose.png"];
 }
 
-- (void)printMatchDetail
+- (IBAction)awayTeamWin:(id)sender
 {
-    _matchStringLabel.text = _match.matchString;
-    _timeLabel.text = [NSDateFormatter localizedStringFromDate:_match.time
-                                                     dateStyle:NSDateFormatterShortStyle
-                                                     timeStyle:NSDateFormatterFullStyle];
-    _dateLabel.text = [NSDateFormatter localizedStringFromDate:_match.date
-                                                     dateStyle:NSDateFormatterShortStyle
-                                                     timeStyle:NSDateFormatterFullStyle];
-    _arenaLabel.text = _match.arena;
-    _groupLabel.text = _match.group;
+    _homeTeamImageView.image = [UIImage imageNamed:@"lose.png"];
+    _awayTeamImageView.image = [UIImage imageNamed:@"win.png"];
 }
 
+- (void)printMatchTime
+{
+//    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+//    [dateFormatter setDateFormat:@"MM-dd-yyyy HH:mm:ss"];
+//    NSDate *gameTime = [dateFormatter dateFromString:_match.matchTime];
+//    
+//    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    
+    _dateLabel.text = _match.matchTime;
+//    _timeLabel.text = [formatter stringFromDate:_match.time];
+}
 
+- (void)findMatchTime
+{
+    NSDictionary *matchDictionary = @{@"Brazil vs Croatia"      :@"06-12-2014 14:00:00",
+                                      @"Mexico vs Brazil"       :@"06-13-2014 10:00:00"};
+    
+    _match.matchTime = [matchDictionary objectForKey:_match.matchString];
+}
 
 @end
