@@ -46,6 +46,23 @@
     [self.view removeGestureRecognizer:_panRecognizer];
 }
 
+#pragma mark - Gesture Recognizers
+
+//- (void)setupSwipeGesture
+//{
+//    //MatchDetail
+//    _swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(pushNextGame)];
+//    _swipeRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+//    [self.view addGestureRecognizer:_swipeRecognizer];
+//}
+
+//- (void)pushNextGame
+//{
+//    ARMatchDetailViewController *mdvc = [self.storyboard instantiateViewControllerWithIdentifier:@"MatchDetail"];
+//    mdvc.match = _nextMatch;
+//    [self.navigationController pushViewController:mdvc animated:YES];
+//}
+
 - (void)setupPanGesture
 {
     _panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self.navigationController action:@selector(popViewControllerAnimated:)];
@@ -54,7 +71,6 @@
     _panRecognizer.maximumNumberOfTouches = 1;
     
     [self.view addGestureRecognizer:_panRecognizer];
-
 }
 
 - (IBAction)homeTeamWin:(id)sender
@@ -71,11 +87,11 @@
 
 - (void)printMatchTime
 {
-//    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-//    [dateFormatter setDateFormat:@"MM-dd-yyyy HH:mm:ss"];
-//    NSDate *gameTime = [dateFormatter dateFromString:_match.matchTime];
-//    
-//    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"MM-dd-yyyy HH:mm:ss"];
+    NSDate *gameTime = [dateFormatter dateFromString:_match.matchTime];
+
+    NSCalendar *calendar = [NSCalendar currentCalendar];
     
     
     _dateLabel.text = _match.matchTime;
@@ -89,5 +105,6 @@
     
     _match.matchTime = [matchDictionary objectForKey:_match.matchString];
 }
+
 
 @end

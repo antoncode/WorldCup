@@ -215,7 +215,7 @@
         <!--Match Detail View Controller-->
         <scene sceneID="k99-zt-Bsn">
             <objects>
-                <viewController id="7Jk-io-Ne2" customClass="ARMatchDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MatchDetail" id="7Jk-io-Ne2" customClass="ARMatchDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ve3-9C-BJm"/>
                         <viewControllerLayoutGuide type="bottom" id="2Gv-R5-anz"/>

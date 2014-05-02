@@ -12,4 +12,5 @@
 @interface ARMatchDetailViewController : UIViewController
 
 @property (nonatomic) ARMatch *match;
+//@property (nonatomic) ARMatch *nextMatch;
 @end

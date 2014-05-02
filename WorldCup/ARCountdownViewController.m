@@ -49,28 +49,53 @@
 
 - (void)updateTimer
 {
-    NSString *kickOff = @"06-12-2014 14:00:00";     // Date and time of first match
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    [dateFormatter setDateFormat:@"MM-dd-yyyy HH:mm:ss"];
-    NSDate *dateFromKickOff = [dateFormatter dateFromString:kickOff];
-    
-    NSDate *now = [NSDate date];
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
-    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *componentsDays = [gregorianCalendar components:NSDayCalendarUnit
-                                                            fromDate:now
-                                                              toDate:dateFromKickOff
-                                                             options:0];
-    NSDateComponents *componentsHours = [calendar components:NSHourCalendarUnit fromDate:now];
-    NSDateComponents *componentsMinutes = [calendar components:NSMinuteCalendarUnit fromDate:now];
-    NSDateComponents *componentsSeconds = [calendar components:NSSecondCalendarUnit fromDate:now];
+    NSDate *now = [NSDate date];
+
+    NSDateComponents *kickOffComponents = [NSDateComponents new];
+    [kickOffComponents setYear:2014];
+    [kickOffComponents setMonth:6];
+    [kickOffComponents setDay:12];
+    [kickOffComponents setHour:13];
+    [kickOffComponents setMinute:0];
+    [kickOffComponents setSecond:0];
+    NSDate *kickOffDate = [calendar dateFromComponents:kickOffComponents];
     
-    _daysToGoLabel.text = [NSString stringWithFormat:@"%ld", (long)(componentsDays.day)];
-    _hoursToGoLabel.text = [NSString stringWithFormat:@"%ld", (24-componentsHours.hour)];
-    _minutesToGoLabel.text = [NSString stringWithFormat:@"%02ld", (60-componentsMinutes.minute)];
-    _secondsToGoLabel.text = [NSString stringWithFormat:@"%02ld", (60-componentsSeconds.second)];
-    
+    if ([now compare:kickOffDate] == NSOrderedAscending) {
+        // now is earlier than kickOffDate
+        NSDateComponents *componentsDays = [calendar components:NSDayCalendarUnit
+                                                       fromDate:now
+                                                         toDate:kickOffDate
+                                                        options:0];
+        _daysToGoLabel.text = [NSString stringWithFormat:@"%02ld", (long)(componentsDays.day)];
+        
+        NSDateComponents *componentsHours = [calendar components:NSHourCalendarUnit
+                                                        fromDate:now
+                                                          toDate:kickOffDate
+                                                         options:0];
+        _hoursToGoLabel.text = [NSString stringWithFormat:@"%02ld", (componentsHours.hour%24)];
+        
+        
+        NSDateComponents *componentsMinutes = [calendar components:NSMinuteCalendarUnit
+                                                          fromDate:now
+                                                            toDate:kickOffDate
+                                                           options:0];
+        _minutesToGoLabel.text = [NSString stringWithFormat:@"%02ld", (componentsMinutes.minute%60)];
+        
+        
+        NSDateComponents *componentsSeconds = [calendar components:NSSecondCalendarUnit
+                                                          fromDate:now
+                                                            toDate:kickOffDate
+                                                           options:0];
+        _secondsToGoLabel.text = [NSString stringWithFormat:@"%02ld", (componentsSeconds.second%60)];
+    } else{
+        _daysToGoLabel.text = @"00";
+        _hoursToGoLabel.text = @"00";
+        _minutesToGoLabel.text = @"00";
+        _secondsToGoLabel.text = @"00";
+    }
 }
+
 
 @end

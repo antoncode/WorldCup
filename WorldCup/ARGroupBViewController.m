@@ -66,13 +66,13 @@
 {
     if ([segue.identifier isEqualToString:@"showBMatchDetail"]) {
         NSIndexPath *indexPath = [_tableView indexPathForSelectedRow];
-        ARMatch *match = [ARMatch new];
-        match = [_arrayOfMatches objectAtIndex:indexPath.row];
+        ARMatch *match = [_arrayOfMatches objectAtIndex:indexPath.row];
+//        ARMatch *nextMatch = [_arrayOfMatches objectAtIndex:indexPath.row+1];
         ARMatchDetailViewController *mdvc = (ARMatchDetailViewController *)segue.destinationViewController;
         
         mdvc.match = match;
+//        mdvc.nextMatch = nextMatch;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"disableSidebar" object:nil];
-
     }
 }
 

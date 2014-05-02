@@ -34,25 +34,19 @@
     _tapToClose = [UITapGestureRecognizer new];
     
     [self setUpChildViewControllers];
-    
     [self setUpDrag];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(enableSidebar) name:@"enableSidebar" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disableSidebar) name:@"disableSidebar" object:nil];
-
-    
-
 }
 
 - (void)enableSidebar
 {
-    NSLog(@"Enabling Sidebar");
     [_panRecognizer setEnabled:YES];
 }
 
 - (void)disableSidebar
 {
-    NSLog(@"Disabling Sidebar");
     [_panRecognizer setEnabled:NO];
 }
 
@@ -104,7 +98,22 @@
     
     _arrayOfViewControllers = @[countdownNavControl, groupANavControl, groupBNavControl];
     
-    _topViewController = _arrayOfViewControllers[0];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDate *now = [NSDate date];
+    NSDateComponents *kickOffComponents = [NSDateComponents new];
+    [kickOffComponents setYear:2014];
+    [kickOffComponents setMonth:6];
+    [kickOffComponents setDay:12];
+    [kickOffComponents setHour:13];
+    [kickOffComponents setMinute:0];
+    [kickOffComponents setSecond:0];
+    NSDate *kickOffDate = [calendar dateFromComponents:kickOffComponents];
+    if ([now compare:kickOffDate] == NSOrderedAscending) {
+        _topViewController = _arrayOfViewControllers[0];
+    } else {
+        // World Cup has started, countdown zeroed out
+        _topViewController = _arrayOfViewControllers[1];
+    }
     
     [self addChildViewController:_topViewController];
     [self.view addSubview:_topViewController.view];
