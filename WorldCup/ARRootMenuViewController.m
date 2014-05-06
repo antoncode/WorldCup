@@ -10,6 +10,12 @@
 #import "ARCountdownViewController.h"
 #import "ARGroupAViewController.h"
 #import "ARGroupBViewController.h"
+#import "ARGroupCViewController.h"
+#import "ARGroupDViewController.h"
+#import "ARGroupEViewController.h"
+#import "ARGroupFViewController.h"
+#import "ARGroupGViewController.h"
+#import "ARGroupHViewController.h"
 
 @interface ARRootMenuViewController () <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
 
@@ -26,7 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.userInteractionEnabled = NO;
@@ -96,7 +102,37 @@
     UINavigationController *groupBNavControl = [[UINavigationController alloc] initWithRootViewController:groupBViewController];
     [groupBNavControl setNavigationBarHidden:YES animated:NO];
     
-    _arrayOfViewControllers = @[countdownNavControl, groupANavControl, groupBNavControl];
+    ARGroupCViewController *groupCViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"groupC"];
+    groupCViewController.title = @"Group C";
+    UINavigationController *groupCNavControl = [[UINavigationController alloc] initWithRootViewController:groupCViewController];
+    [groupCNavControl setNavigationBarHidden:YES animated:NO];
+    
+    ARGroupDViewController *groupDViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"groupD"];
+    groupDViewController.title = @"Group D";
+    UINavigationController *groupDNavControl = [[UINavigationController alloc] initWithRootViewController:groupDViewController];
+    [groupDNavControl setNavigationBarHidden:YES animated:NO];
+    
+    ARGroupEViewController *groupEViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"groupE"];
+    groupEViewController.title = @"Group E";
+    UINavigationController *groupENavControl = [[UINavigationController alloc] initWithRootViewController:groupEViewController];
+    [groupENavControl setNavigationBarHidden:YES animated:NO];
+    
+    ARGroupFViewController *groupFViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"groupF"];
+    groupFViewController.title = @"Group F";
+    UINavigationController *groupFNavControl = [[UINavigationController alloc] initWithRootViewController:groupFViewController];
+    [groupFNavControl setNavigationBarHidden:YES animated:NO];
+
+    ARGroupGViewController *groupGViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"groupG"];
+    groupGViewController.title = @"Group G";
+    UINavigationController *groupGNavControl = [[UINavigationController alloc] initWithRootViewController:groupGViewController];
+    [groupGNavControl setNavigationBarHidden:YES animated:NO];
+    
+    ARGroupHViewController *groupHViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"groupH"];
+    groupHViewController.title = @"Group H";
+    UINavigationController *groupHNavControl = [[UINavigationController alloc] initWithRootViewController:groupHViewController];
+    [groupHNavControl setNavigationBarHidden:YES animated:NO];
+    
+    _arrayOfViewControllers = @[countdownNavControl, groupANavControl, groupBNavControl, groupCNavControl, groupDNavControl, groupENavControl, groupFNavControl, groupGNavControl, groupHNavControl];
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDate *now = [NSDate date];

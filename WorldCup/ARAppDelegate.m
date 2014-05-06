@@ -16,6 +16,12 @@
 
     return YES;
 }
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    // Fires if app open
+    NSLog(@"Test notification");
+}
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {

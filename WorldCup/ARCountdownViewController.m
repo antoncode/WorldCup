@@ -23,7 +23,7 @@
     [super viewDidLoad];
     
     NSTimer *timer = [NSTimer new];
-    timer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(bounceCountdownViewController) userInfo:nil repeats:NO];
+    timer = [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(bounceCountdownViewController) userInfo:nil repeats:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated
