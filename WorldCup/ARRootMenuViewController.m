@@ -16,6 +16,10 @@
 #import "ARGroupFViewController.h"
 #import "ARGroupGViewController.h"
 #import "ARGroupHViewController.h"
+#import "ARRoundOfSixteenViewController.h"
+#import "ARQuarterFinalViewController.h"
+#import "ARSemiFinalViewController.h"
+#import "ARFinalViewController.h"
 
 @interface ARRootMenuViewController () <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
 
@@ -95,44 +99,64 @@
     ARGroupAViewController *groupAViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"groupA"];
     groupAViewController.title = @"Group A";
     UINavigationController *groupANavControl = [[UINavigationController alloc] initWithRootViewController:groupAViewController];
-    [groupANavControl setNavigationBarHidden:YES animated:NO];
+    [groupANavControl setNavigationBarHidden:NO animated:NO];
     
     ARGroupBViewController *groupBViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"groupB"];
     groupBViewController.title = @"Group B";
     UINavigationController *groupBNavControl = [[UINavigationController alloc] initWithRootViewController:groupBViewController];
-    [groupBNavControl setNavigationBarHidden:YES animated:NO];
+    [groupBNavControl setNavigationBarHidden:NO animated:NO];
     
     ARGroupCViewController *groupCViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"groupC"];
     groupCViewController.title = @"Group C";
     UINavigationController *groupCNavControl = [[UINavigationController alloc] initWithRootViewController:groupCViewController];
-    [groupCNavControl setNavigationBarHidden:YES animated:NO];
+    [groupCNavControl setNavigationBarHidden:NO animated:NO];
     
     ARGroupDViewController *groupDViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"groupD"];
     groupDViewController.title = @"Group D";
     UINavigationController *groupDNavControl = [[UINavigationController alloc] initWithRootViewController:groupDViewController];
-    [groupDNavControl setNavigationBarHidden:YES animated:NO];
+    [groupDNavControl setNavigationBarHidden:NO animated:NO];
     
     ARGroupEViewController *groupEViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"groupE"];
     groupEViewController.title = @"Group E";
     UINavigationController *groupENavControl = [[UINavigationController alloc] initWithRootViewController:groupEViewController];
-    [groupENavControl setNavigationBarHidden:YES animated:NO];
+    [groupENavControl setNavigationBarHidden:NO animated:NO];
     
     ARGroupFViewController *groupFViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"groupF"];
     groupFViewController.title = @"Group F";
     UINavigationController *groupFNavControl = [[UINavigationController alloc] initWithRootViewController:groupFViewController];
-    [groupFNavControl setNavigationBarHidden:YES animated:NO];
+    [groupFNavControl setNavigationBarHidden:NO animated:NO];
 
     ARGroupGViewController *groupGViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"groupG"];
     groupGViewController.title = @"Group G";
     UINavigationController *groupGNavControl = [[UINavigationController alloc] initWithRootViewController:groupGViewController];
-    [groupGNavControl setNavigationBarHidden:YES animated:NO];
+    [groupGNavControl setNavigationBarHidden:NO animated:NO];
     
     ARGroupHViewController *groupHViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"groupH"];
     groupHViewController.title = @"Group H";
     UINavigationController *groupHNavControl = [[UINavigationController alloc] initWithRootViewController:groupHViewController];
-    [groupHNavControl setNavigationBarHidden:YES animated:NO];
+    [groupHNavControl setNavigationBarHidden:NO animated:NO];
     
-    _arrayOfViewControllers = @[countdownNavControl, groupANavControl, groupBNavControl, groupCNavControl, groupDNavControl, groupENavControl, groupFNavControl, groupGNavControl, groupHNavControl];
+    ARRoundOfSixteenViewController *roundOfSixteenViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"roundOfSixteen"];
+    roundOfSixteenViewController.title = @"Round of Sixteen";
+    UINavigationController *roundOfSixteenNavControl = [[UINavigationController alloc] initWithRootViewController:roundOfSixteenViewController];
+    [roundOfSixteenNavControl setNavigationBarHidden:NO animated:NO];
+    
+    ARQuarterFinalViewController *quarterFinalViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"quarterFinal"];
+    quarterFinalViewController.title = @"Quarter-final";
+    UINavigationController *quarterFinalNavControl = [[UINavigationController alloc] initWithRootViewController:quarterFinalViewController];
+    [quarterFinalNavControl setNavigationBarHidden:NO animated:NO];
+    
+    ARSemiFinalViewController *semiFinalViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"semiFinal"];
+    semiFinalViewController.title = @"Semi-Final";
+    UINavigationController *semiFinalNavControl = [[UINavigationController alloc] initWithRootViewController:semiFinalViewController];
+    [semiFinalNavControl setNavigationBarHidden:NO animated:NO];
+    
+    ARFinalViewController *finalViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"final"];
+    finalViewController.title = @"Final";
+    UINavigationController *finalNavControl = [[UINavigationController alloc] initWithRootViewController:finalViewController];
+    [finalNavControl setNavigationBarHidden:NO animated:NO];
+    
+    _arrayOfViewControllers = @[countdownNavControl, groupANavControl, groupBNavControl, groupCNavControl, groupDNavControl, groupENavControl, groupFNavControl, groupGNavControl, groupHNavControl, roundOfSixteenNavControl, quarterFinalNavControl, semiFinalNavControl, finalNavControl];
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDate *now = [NSDate date];

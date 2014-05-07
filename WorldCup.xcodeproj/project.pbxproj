@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A1D562F191973D800891751 /* ARRoundOfSixteenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1D562E191973D800891751 /* ARRoundOfSixteenViewController.m */; };
+		3A1D5632191973F700891751 /* ARQuarterFinalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1D5631191973F700891751 /* ARQuarterFinalViewController.m */; };
+		3A1D56351919741000891751 /* ARSemiFinalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1D56341919741000891751 /* ARSemiFinalViewController.m */; };
+		3A1D56381919744C00891751 /* ARFinalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1D56371919744C00891751 /* ARFinalViewController.m */; };
 		3A40E9C2190EE5AB00B6AB03 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A40E9C1190EE5AB00B6AB03 /* Foundation.framework */; };
 		3A40E9C4190EE5AB00B6AB03 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A40E9C3190EE5AB00B6AB03 /* CoreGraphics.framework */; };
 		3A40E9C6190EE5AB00B6AB03 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A40E9C5190EE5AB00B6AB03 /* UIKit.framework */; };
@@ -31,8 +35,6 @@
 		3AB08D7819117946009ABA2C /* ARRootMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB08D7719117946009ABA2C /* ARRootMenuViewController.m */; };
 		3AB08D7C191184AC009ABA2C /* ARGroupAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB08D7B191184AC009ABA2C /* ARGroupAViewController.m */; };
 		3AB08D8F1911AE0F009ABA2C /* original.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3AB08D8E1911AE0F009ABA2C /* original.jpg */; };
-		3AB08D981912C26A009ABA2C /* lose.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AB08D951912C26A009ABA2C /* lose.png */; };
-		3AB08D991912C26A009ABA2C /* win.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AB08D961912C26A009ABA2C /* win.png */; };
 		3AB08D9C1912CFB7009ABA2C /* ARGroupBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB08D9B1912CFB7009ABA2C /* ARGroupBViewController.m */; };
 		3AB08DA01912D7FB009ABA2C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AB08D9F1912D7FB009ABA2C /* Images.xcassets */; };
 		3AB08DA319143B15009ABA2C /* ARAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB08DA219143B15009ABA2C /* ARAlarmViewController.m */; };
@@ -49,6 +51,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A1D562D191973D800891751 /* ARRoundOfSixteenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRoundOfSixteenViewController.h; sourceTree = "<group>"; };
+		3A1D562E191973D800891751 /* ARRoundOfSixteenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRoundOfSixteenViewController.m; sourceTree = "<group>"; };
+		3A1D5630191973F700891751 /* ARQuarterFinalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARQuarterFinalViewController.h; sourceTree = "<group>"; };
+		3A1D5631191973F700891751 /* ARQuarterFinalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARQuarterFinalViewController.m; sourceTree = "<group>"; };
+		3A1D56331919741000891751 /* ARSemiFinalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARSemiFinalViewController.h; sourceTree = "<group>"; };
+		3A1D56341919741000891751 /* ARSemiFinalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARSemiFinalViewController.m; sourceTree = "<group>"; };
+		3A1D56361919744C00891751 /* ARFinalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARFinalViewController.h; sourceTree = "<group>"; };
+		3A1D56371919744C00891751 /* ARFinalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARFinalViewController.m; sourceTree = "<group>"; };
 		3A40E9BE190EE5AB00B6AB03 /* WorldCup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldCup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A40E9C1190EE5AB00B6AB03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3A40E9C3190EE5AB00B6AB03 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -88,8 +98,6 @@
 		3AB08D7A191184AC009ABA2C /* ARGroupAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARGroupAViewController.h; sourceTree = "<group>"; };
 		3AB08D7B191184AC009ABA2C /* ARGroupAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARGroupAViewController.m; sourceTree = "<group>"; };
 		3AB08D8E1911AE0F009ABA2C /* original.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = original.jpg; sourceTree = "<group>"; };
-		3AB08D951912C26A009ABA2C /* lose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lose.png; sourceTree = "<group>"; };
-		3AB08D961912C26A009ABA2C /* win.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = win.png; sourceTree = "<group>"; };
 		3AB08D9A1912CFB7009ABA2C /* ARGroupBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARGroupBViewController.h; sourceTree = "<group>"; };
 		3AB08D9B1912CFB7009ABA2C /* ARGroupBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARGroupBViewController.m; sourceTree = "<group>"; };
 		3AB08D9F1912D7FB009ABA2C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -121,6 +129,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A1D56391919745700891751 /* Knockout Stages View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3A1D562D191973D800891751 /* ARRoundOfSixteenViewController.h */,
+				3A1D562E191973D800891751 /* ARRoundOfSixteenViewController.m */,
+				3A1D5630191973F700891751 /* ARQuarterFinalViewController.h */,
+				3A1D5631191973F700891751 /* ARQuarterFinalViewController.m */,
+				3A1D56331919741000891751 /* ARSemiFinalViewController.h */,
+				3A1D56341919741000891751 /* ARSemiFinalViewController.m */,
+				3A1D56361919744C00891751 /* ARFinalViewController.h */,
+				3A1D56371919744C00891751 /* ARFinalViewController.m */,
+			);
+			name = "Knockout Stages View Controllers";
+			sourceTree = "<group>";
+		};
 		3A40E9B5190EE5AB00B6AB03 = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +184,7 @@
 				3AB08D6E19101C40009ABA2C /* ARCountdownViewController.h */,
 				3AB08D6F19101C40009ABA2C /* ARCountdownViewController.m */,
 				3A50AB9019189E1200ABD9E7 /* Group View Controllers */,
+				3A1D56391919745700891751 /* Knockout Stages View Controllers */,
 				3AB08D65190F1067009ABA2C /* ARMatchDetailViewController.h */,
 				3AB08D66190F1067009ABA2C /* ARMatchDetailViewController.m */,
 				3AB08DA119143B15009ABA2C /* ARAlarmViewController.h */,
@@ -177,8 +201,6 @@
 		3A40E9C8190EE5AB00B6AB03 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3AB08D951912C26A009ABA2C /* lose.png */,
-				3AB08D961912C26A009ABA2C /* win.png */,
 				3AB08D8E1911AE0F009ABA2C /* original.jpg */,
 				3A40E9C9190EE5AB00B6AB03 /* WorldCup-Info.plist */,
 				3A40E9CA190EE5AB00B6AB03 /* InfoPlist.strings */,
@@ -308,8 +330,6 @@
 			files = (
 				3AB08D8F1911AE0F009ABA2C /* original.jpg in Resources */,
 				3AB08DA01912D7FB009ABA2C /* Images.xcassets in Resources */,
-				3AB08D981912C26A009ABA2C /* lose.png in Resources */,
-				3AB08D991912C26A009ABA2C /* win.png in Resources */,
 				3A40E9CC190EE5AB00B6AB03 /* InfoPlist.strings in Resources */,
 				3A40E9D5190EE5AB00B6AB03 /* Main.storyboard in Resources */,
 			);
@@ -332,8 +352,12 @@
 			files = (
 				3A50AB8319187D3C00ABD9E7 /* ARGroupDViewController.m in Sources */,
 				3A50AB8C19187D6200ABD9E7 /* ARGroupGViewController.m in Sources */,
+				3A1D56351919741000891751 /* ARSemiFinalViewController.m in Sources */,
+				3A1D5632191973F700891751 /* ARQuarterFinalViewController.m in Sources */,
+				3A1D56381919744C00891751 /* ARFinalViewController.m in Sources */,
 				3AB08D6A190F28B1009ABA2C /* ARMatch.m in Sources */,
 				3A50AB8019187D2F00ABD9E7 /* ARGroupCViewController.m in Sources */,
+				3A1D562F191973D800891751 /* ARRoundOfSixteenViewController.m in Sources */,
 				3AB08D9C1912CFB7009ABA2C /* ARGroupBViewController.m in Sources */,
 				3AB08DA319143B15009ABA2C /* ARAlarmViewController.m in Sources */,
 				3AB08D7019101C40009ABA2C /* ARCountdownViewController.m in Sources */,

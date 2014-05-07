@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *brazilMatchTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *yourMatchTimeLabel;
 @property (nonatomic, strong) UIPanGestureRecognizer *panRecognizer;
-@property (nonatomic, strong) NSDate *dateFromString;
+@property (nonatomic, strong) NSDate *dateFromString1, *dateFromString2;
 
 @end
 
@@ -121,31 +121,35 @@
                                       @"USA vs Germany"                     :@"06-26-2014 01:00PM",
                                       @"Korea Republic vs Belgium"          :@"06-26-2014 05:00PM",
                                       @"Algeria vs Russia"                  :@"06-26-2014 05:00PM",};
-    
     _match.matchTime = [matchDictionary objectForKey:_match.matchString];
     
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    [dateFormatter setDateFormat:@"MM-dd-yyyy hh:mma"];
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"America/Sao_Paulo"]];
-    _dateFromString = [dateFormatter dateFromString:_match.matchTime];
+    NSDateFormatter *dateFormatter1 = [NSDateFormatter new];
+    [dateFormatter1 setDateFormat:@"MM-dd-yyyy hh:mma"];
+    [dateFormatter1 setTimeZone:[NSTimeZone timeZoneWithName:@"America/Sao_Paulo"]];
+    _dateFromString1 = [dateFormatter1 dateFromString:_match.matchTime];
+    
+    NSDateFormatter *dateFormatter2 = [NSDateFormatter new];
+    [dateFormatter2 setDateFormat:@"MM-dd-yyyy hh:mma"];
+    [dateFormatter2 setTimeZone:[NSTimeZone defaultTimeZone]];
+    _dateFromString2 = [dateFormatter2 dateFromString:_match.matchTime];
 }
 
 - (void)printMatchTime
 {
-    _brazilMatchTimeLabel.text = [NSString stringWithFormat:@"Brazil time: %@", _match.matchTime];
-    
     NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"MM-dd-yyyy hh:mma"];
-    NSString *stringFromDate = [formatter stringFromDate:_dateFromString];
+    [formatter setDateFormat:@"MMM dd, yyyy hh:mma"];
+    NSString *stringFromDate1 = [formatter stringFromDate:_dateFromString1];
+    NSString *stringFromDate2 = [formatter stringFromDate:_dateFromString2];
     
-    _yourMatchTimeLabel.text = [NSString stringWithFormat:@"Your time: %@", stringFromDate];
+    _yourMatchTimeLabel.text = [NSString stringWithFormat:@"Your time: %@", stringFromDate1];
+    _brazilMatchTimeLabel.text = [NSString stringWithFormat:@"Brazil time: %@", stringFromDate2];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"showAlarmVC"]) {
         ARAlarmViewController *avc = (ARAlarmViewController *)segue.destinationViewController;
-        avc.matchTime = _dateFromString;
+        avc.matchTime = _dateFromString1;
     }
 }
 
