@@ -10,13 +10,14 @@
 
 @interface ARMatchDetailViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *homeTeamImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *awayTeamImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *brazilMatchTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *yourMatchTimeLabel;
 @property (nonatomic, strong) UIPanGestureRecognizer *panRecognizer;
 @property (nonatomic, strong) NSDate *dateFromString1, *dateFromString2;
-@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (nonatomic, strong) IBOutlet UIDatePicker *popUpDatePicker;
+@property (nonatomic, strong) IBOutlet UIButton *setReminderButton;
+@property (nonatomic, strong) IBOutlet UIButton *cancelReminderButton;
 
 @end
 
@@ -30,6 +31,77 @@
     
     [self findMatchTime];
     [self printMatchTime];
+    
+    // Set up date picker
+    _popUpDatePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 100)];
+    _popUpDatePicker.datePickerMode = UIDatePickerModeDateAndTime;
+    _popUpDatePicker.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:_popUpDatePicker];
+    
+    // Set up reminder button
+    _setReminderButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 44)];
+    [_setReminderButton setTitle:@"Set reminder" forState:UIControlStateNormal];
+    [_setReminderButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    _setReminderButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    _setReminderButton.backgroundColor = [UIColor whiteColor];
+    [_setReminderButton addTarget:self action:@selector(setReminder:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_setReminderButton];
+    
+    // Set up cancel button
+    _cancelReminderButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 44)];
+    [_cancelReminderButton setTitle:@"Cancel" forState:UIControlStateNormal];
+    [_cancelReminderButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    _cancelReminderButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    _cancelReminderButton.backgroundColor = [UIColor whiteColor];
+    [_cancelReminderButton addTarget:self action:@selector(cancelReminder:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_cancelReminderButton];
+}
+
+- (IBAction)addReminder:(id)sender
+{
+    // Show date picker
+    [UIView animateWithDuration:0.25 animations:^{
+        [_popUpDatePicker setFrame:CGRectMake(0, self.view.frame.size.height/2 + 100, self.view.frame.size.width, 100)];
+        [_cancelReminderButton setFrame:CGRectMake(0, self.view.frame.size.height/2 + 55, self.view.frame.size.width, 44)];
+        [_setReminderButton setFrame:CGRectMake(0, self.view.frame.size.height/2 + 10, self.view.frame.size.width, 44)];
+    }];
+}
+
+- (IBAction)setReminder:(id)sender
+{
+    UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    localNotification.fireDate = _popUpDatePicker.date;
+    localNotification.alertBody = [NSString stringWithFormat:@"%@ beggining", _match.matchString];
+    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        [_popUpDatePicker setFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 100)];
+        [_cancelReminderButton setFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 44)];
+        [_setReminderButton setFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 44)];
+    }];
+    
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"MMMM dd, yyyy hh:mma"];
+    [dateFormatter setTimeZone:[NSTimeZone defaultTimeZone]];
+    NSString *stringFromDate = [dateFormatter stringFromDate:_popUpDatePicker.date];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reminder Set"
+                                                    message:[NSString stringWithFormat:@"%@", stringFromDate]
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
+- (IBAction)cancelReminder:(id)sender
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        [_popUpDatePicker setFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 100)];
+        [_cancelReminderButton setFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 44)];
+        [_setReminderButton setFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 44)];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -42,7 +114,7 @@
     [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"America/Sao_Paulo"]];
     dateFromString = [dateFormatter dateFromString:_match.matchTime];
     
-    _datePicker.date = dateFromString;
+    _popUpDatePicker.date = dateFromString;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -168,7 +240,7 @@
 - (void)printMatchTime
 {
     NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"MMM dd, yyyy hh:mma"];
+    [formatter setDateFormat:@"MMMM dd, yyyy hh:mma"];
     NSString *stringFromDate1 = [formatter stringFromDate:_dateFromString1];
     NSString *stringFromDate2 = [formatter stringFromDate:_dateFromString2];
     
@@ -176,26 +248,5 @@
     _brazilMatchTimeLabel.text = [NSString stringWithFormat:@"%@", stringFromDate2];
 }
 
-- (IBAction)setReminder:(id)sender
-{    
-    UILocalNotification* localNotification = [[UILocalNotification alloc] init];
-    localNotification.timeZone = [NSTimeZone defaultTimeZone];
-    localNotification.fireDate = _datePicker.date;
-    localNotification.alertBody = [NSString stringWithFormat:@"%@ beginning soon", _match.matchString];
-    localNotification.timeZone = [NSTimeZone defaultTimeZone];
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-    
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    [dateFormatter setDateFormat:@"MMM dd, yyyy hh:mma"];
-    [dateFormatter setTimeZone:[NSTimeZone defaultTimeZone]];
-    NSString *stringFromDate = [dateFormatter stringFromDate:_datePicker.date];
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reminder Set"
-                                                    message:[NSString stringWithFormat:@"%@", stringFromDate]
-                                                   delegate:self
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
-}
 
 @end
