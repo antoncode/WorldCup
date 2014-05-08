@@ -37,7 +37,6 @@
 		3AB08D8F1911AE0F009ABA2C /* original.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3AB08D8E1911AE0F009ABA2C /* original.jpg */; };
 		3AB08D9C1912CFB7009ABA2C /* ARGroupBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB08D9B1912CFB7009ABA2C /* ARGroupBViewController.m */; };
 		3AB08DA01912D7FB009ABA2C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AB08D9F1912D7FB009ABA2C /* Images.xcassets */; };
-		3AB08DA319143B15009ABA2C /* ARAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB08DA219143B15009ABA2C /* ARAlarmViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,8 +100,6 @@
 		3AB08D9A1912CFB7009ABA2C /* ARGroupBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARGroupBViewController.h; sourceTree = "<group>"; };
 		3AB08D9B1912CFB7009ABA2C /* ARGroupBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARGroupBViewController.m; sourceTree = "<group>"; };
 		3AB08D9F1912D7FB009ABA2C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		3AB08DA119143B15009ABA2C /* ARAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARAlarmViewController.h; sourceTree = "<group>"; };
-		3AB08DA219143B15009ABA2C /* ARAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARAlarmViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,8 +184,6 @@
 				3A1D56391919745700891751 /* Knockout Stages View Controllers */,
 				3AB08D65190F1067009ABA2C /* ARMatchDetailViewController.h */,
 				3AB08D66190F1067009ABA2C /* ARMatchDetailViewController.m */,
-				3AB08DA119143B15009ABA2C /* ARAlarmViewController.h */,
-				3AB08DA219143B15009ABA2C /* ARAlarmViewController.m */,
 				3A40E9D3190EE5AB00B6AB03 /* Main.storyboard */,
 				3AB08D68190F28B1009ABA2C /* ARMatch.h */,
 				3AB08D69190F28B1009ABA2C /* ARMatch.m */,
@@ -359,7 +354,6 @@
 				3A50AB8019187D2F00ABD9E7 /* ARGroupCViewController.m in Sources */,
 				3A1D562F191973D800891751 /* ARRoundOfSixteenViewController.m in Sources */,
 				3AB08D9C1912CFB7009ABA2C /* ARGroupBViewController.m in Sources */,
-				3AB08DA319143B15009ABA2C /* ARAlarmViewController.m in Sources */,
 				3AB08D7019101C40009ABA2C /* ARCountdownViewController.m in Sources */,
 				3A40E9CE190EE5AB00B6AB03 /* main.m in Sources */,
 				3AB08D7C191184AC009ABA2C /* ARGroupAViewController.m in Sources */,

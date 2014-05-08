@@ -7,7 +7,6 @@
 //
 
 #import "ARMatchDetailViewController.h"
-#import "ARAlarmViewController.h"
 
 @interface ARMatchDetailViewController ()
 
@@ -17,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *yourMatchTimeLabel;
 @property (nonatomic, strong) UIPanGestureRecognizer *panRecognizer;
 @property (nonatomic, strong) NSDate *dateFromString1, *dateFromString2;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 @end
 
@@ -30,6 +30,19 @@
     
     [self findMatchTime];
     [self printMatchTime];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    NSDate *dateFromString = [NSDate new];
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"MM-dd-yyyy hh:mma"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"America/Sao_Paulo"]];
+    dateFromString = [dateFormatter dateFromString:_match.matchTime];
+    
+    _datePicker.date = dateFromString;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -163,16 +176,18 @@
     NSString *stringFromDate1 = [formatter stringFromDate:_dateFromString1];
     NSString *stringFromDate2 = [formatter stringFromDate:_dateFromString2];
     
-    _yourMatchTimeLabel.text = [NSString stringWithFormat:@"Your time: %@", stringFromDate1];
-    _brazilMatchTimeLabel.text = [NSString stringWithFormat:@"Brazil time: %@", stringFromDate2];
+    _yourMatchTimeLabel.text = [NSString stringWithFormat:@"%@", stringFromDate1];
+    _brazilMatchTimeLabel.text = [NSString stringWithFormat:@"%@", stringFromDate2];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (IBAction)setReminder:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"showAlarmVC"]) {
-        ARAlarmViewController *avc = (ARAlarmViewController *)segue.destinationViewController;
-        avc.matchTime = _dateFromString1;
-    }
+    UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:5];
+    localNotification.alertBody = [NSString stringWithFormat:@"%@ beginning soon", _match.matchString];
+    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    NSLog(@"Date picker date: %@", _datePicker.date);
 }
 
 @end
