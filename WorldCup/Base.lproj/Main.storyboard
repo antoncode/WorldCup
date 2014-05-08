@@ -76,6 +76,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTx-6F-FL4">
+                                <rect key="frame" x="20" y="458" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.08235294371843338" green="0.60784316062927246" blue="0.22745099663734436" alpha="1" colorSpace="deviceRGB"/>
                     </view>
@@ -85,6 +92,7 @@
                         <outlet property="hoursToGoLabel" destination="IVS-5B-zTo" id="Fhc-kM-LHp"/>
                         <outlet property="minutesToGoLabel" destination="PRp-nt-KqA" id="n8N-UA-lLT"/>
                         <outlet property="secondsToGoLabel" destination="lJu-xk-M7o" id="Adh-pd-z2v"/>
+                        <outlet property="untilLabel" destination="WTx-6F-FL4" id="Y3y-45-akD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FwY-H5-s5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -532,6 +540,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="l13-hd-cZv" id="DUW-xC-17n"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a7x-On-kOn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -570,6 +581,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="xP1-Xf-sJ3" id="gb4-1f-PiB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NG4-af-F1m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -608,6 +622,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="nFT-Bb-bfl" id="AXh-LA-GXY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L59-FE-HQN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -764,6 +781,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="eoA-ke-fe6"/>
+        <segue reference="Bhg-fK-5Mu"/>
     </inferredMetricsTieBreakers>
 </document>

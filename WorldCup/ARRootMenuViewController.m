@@ -142,7 +142,7 @@
     [roundOfSixteenNavControl setNavigationBarHidden:NO animated:NO];
     
     ARQuarterFinalViewController *quarterFinalViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"quarterFinal"];
-    quarterFinalViewController.title = @"Quarter-final";
+    quarterFinalViewController.title = @"Quarter-Final";
     UINavigationController *quarterFinalNavControl = [[UINavigationController alloc] initWithRootViewController:quarterFinalViewController];
     [quarterFinalNavControl setNavigationBarHidden:NO animated:NO];
     

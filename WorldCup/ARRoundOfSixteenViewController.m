@@ -13,7 +13,7 @@
 @interface ARRoundOfSixteenViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic) NSArray *groupA;
+@property (nonatomic) NSArray *arrayOfMatchStrings;
 @property (nonatomic, strong) NSMutableArray *arrayOfMatches;
 
 @end
@@ -31,7 +31,7 @@
     
     _arrayOfMatches = [NSMutableArray new];
     
-    [self createGroupA];
+    [self createArrayOfMatchStrings];
     [self setUpMatches];
 }
 
@@ -79,45 +79,18 @@
 
 #pragma mark - Helper methods
 
-- (void)createGroupA
+- (void)createArrayOfMatchStrings
 {
-    _groupA = @[@"Brazil", @"Croatia", @"Mexico", @"Cameroon"];
+    _arrayOfMatchStrings = @[@"1A vs 2B", @"1C vs 2D", @"1B vs 2A", @"1D vs 2C", @"1E vs 2F", @"1G vs 2H", @"1F vs 2E", @"1H vs 2G"];
 }
 
 - (void)setUpMatches
 {
-    for (NSInteger x=0; x<_groupA.count; x++) {
-        for (NSInteger y=0; y<_groupA.count; y++) {
-            if (x != y) {       // TeamX vs TeamX not added
-                ARMatch *match = [ARMatch new];
-                match.matchString = [NSString stringWithFormat:@"%@ vs %@", [_groupA objectAtIndex:x], [_groupA objectAtIndex:y]];
-                match.homeTeamName = [_groupA objectAtIndex:x];
-                match.awayTeamName = [_groupA objectAtIndex:y];
-                [_arrayOfMatches addObject:match];
-            }
-        }
+    for (NSInteger x=0; x<_arrayOfMatchStrings.count; x++) {
+            ARMatch *match = [ARMatch new];
+            match.matchString = [NSString stringWithFormat:@"%@", [_arrayOfMatchStrings objectAtIndex:x]];
+            [_arrayOfMatches addObject:match];
     }
-    
-    // Removing incorrect match instances
-    NSMutableIndexSet *indexToRemove = [NSMutableIndexSet new];
-    [indexToRemove addIndex:2];
-    [indexToRemove addIndex:3];
-    [indexToRemove addIndex:5];
-    [indexToRemove addIndex:6];
-    [indexToRemove addIndex:7];
-    [indexToRemove addIndex:11];
-    [_arrayOfMatches removeObjectsAtIndexes:indexToRemove];
-    
-    // Reorganizing array chronologically
-    ARMatch *match = [_arrayOfMatches objectAtIndex:3];
-    [_arrayOfMatches removeObjectAtIndex:3];
-    [_arrayOfMatches insertObject:match atIndex:1];
-    match = [_arrayOfMatches objectAtIndex:5];
-    [_arrayOfMatches removeObjectAtIndex:5];
-    [_arrayOfMatches insertObject:match atIndex:3];
-    match = [_arrayOfMatches objectAtIndex:5];
-    [_arrayOfMatches removeObjectAtIndex:5];
-    [_arrayOfMatches insertObject:match atIndex:4];
 }
 
 @end

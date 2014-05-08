@@ -120,7 +120,29 @@
                                       @"Portugal vs Ghana"                  :@"06-26-2014 01:00PM",
                                       @"USA vs Germany"                     :@"06-26-2014 01:00PM",
                                       @"Korea Republic vs Belgium"          :@"06-26-2014 05:00PM",
-                                      @"Algeria vs Russia"                  :@"06-26-2014 05:00PM",};
+                                      @"Algeria vs Russia"                  :@"06-26-2014 05:00PM",
+                                      
+                                      @"1A vs 2B"                           :@"06-28-2014 01:00PM",
+                                      @"1C vs 2D"                           :@"06-28-2014 05:00PM",
+                                      @"1B vs 2A"                           :@"06-29-2014 01:00PM",
+                                      @"1D vs 2C"                           :@"06-29-2014 05:00PM",
+                                      @"1E vs 2F"                           :@"06-30-2014 01:00PM",
+                                      @"1G vs 2H"                           :@"06-30-2014 05:00PM",
+                                      @"1F vs 2E"                           :@"07-01-2014 01:00PM",
+                                      @"1H vs 2G"                           :@"07-01-2014 05:00PM",
+                                      
+                                      @"W53 vs W54"                         :@"07-04-2014 01:00PM",
+                                      @"W49 vs W50"                         :@"07-04-2014 05:00PM",
+                                      @"W55 vs W56"                         :@"07-05-2014 01:00PM",
+                                      @"W51 vs W52"                         :@"07-05-2014 05:00PM",
+                                      
+                                      @"W57 vs W58"                         :@"07-08-2014 05:00PM",
+                                      @"W59 vs W60"                         :@"07-09-2014 05:00PM",
+                                      
+                                      @"Third-Place"                         :@"07-12-2014 05:00PM",
+                                      
+                                      @"Final"                         :@"07-13-2014 04:00PM"};
+    
     _match.matchTime = [matchDictionary objectForKey:_match.matchString];
     
     NSDateFormatter *dateFormatter1 = [NSDateFormatter new];

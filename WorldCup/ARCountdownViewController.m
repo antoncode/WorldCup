@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *hoursToGoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *minutesToGoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *secondsToGoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *untilLabel;
 
 @end
 
@@ -25,7 +26,6 @@
     NSTimer *timer = [NSTimer new];
     timer = [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(bounceCountdownViewController) userInfo:nil repeats:NO];
     timer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(bounceCountdownViewController) userInfo:nil repeats:NO];
-
 }
 
 - (void)bounceCountdownViewController
@@ -94,8 +94,10 @@
                                                             toDate:kickOffDate
                                                            options:0];
         _secondsToGoLabel.text = [NSString stringWithFormat:@"%02ld", (componentsSeconds.second%60)];
-    }
-    else if (([now compare:kickOffDate] == NSOrderedDescending) && ([now compare:finalMatchDate] == NSOrderedAscending))
+        
+        _untilLabel.text = @"to first match";
+        
+    } else if (([now compare:kickOffDate] == NSOrderedDescending) && ([now compare:finalMatchDate] == NSOrderedAscending))
     {   // now is later than kickOffDate and before finalMatchDate
         NSDateComponents *componentsDays = [calendar components:NSDayCalendarUnit
                                                        fromDate:now
@@ -117,13 +119,15 @@
                                                             toDate:finalMatchDate
                                                            options:0];
         _secondsToGoLabel.text = [NSString stringWithFormat:@"%02ld", (componentsSeconds.second%60)];
-    }
-    else
-    {
+        
+        _untilLabel.text = @"to final match";
+        
+    } else {
         _daysToGoLabel.text = @"00";
         _hoursToGoLabel.text = @"00";
         _minutesToGoLabel.text = @"00";
         _secondsToGoLabel.text = @"00";
+        _untilLabel.text = @"";
     }
 }
 
