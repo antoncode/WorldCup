@@ -210,7 +210,7 @@
         if (_topViewController.view.frame.origin.x > self.view.frame.size.width / 5) {
             [self openMenu];
         } else {
-            [UIView animateWithDuration:.4 animations:^{
+            [UIView animateWithDuration:.3 animations:^{
                 _topViewController.view.frame = CGRectMake(0, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
             }];
         }
@@ -219,7 +219,7 @@
 
 - (void)openMenu
 {
-    [UIView animateWithDuration:.4 animations:^{
+    [UIView animateWithDuration:.3 animations:^{
         _topViewController.view.frame = CGRectMake(self.view.frame.size.width * 0.75, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
     } completion:^(BOOL finished) {
         if (finished) {
@@ -233,7 +233,7 @@
 
 - (void)closeMenu:(id)sender
 {
-    [UIView animateWithDuration:.5 animations:^{
+    [UIView animateWithDuration:.3 animations:^{
         _topViewController.view.frame = self.view.frame;
     } completion:^(BOOL finished) {
         [_topViewController.view removeGestureRecognizer:_tapToClose];

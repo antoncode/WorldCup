@@ -120,9 +120,4 @@
     [_arrayOfMatches insertObject:match atIndex:4];
 }
 
-//- (ARMatch *)nextMatchForDetailController:(ARMatchDetailViewController *)detailVC
-//{
-//    return [_arrayOfMatches objectAtIndex:[_arrayOfMatches indexOfObject:detailVC.match]+1];
-//}
-
 @end

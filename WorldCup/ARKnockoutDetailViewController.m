@@ -1,19 +1,18 @@
 //
-//  ARMatchDetailViewController.m
+//  ARKnockoutDetailViewController.m
 //  WorldCup
 //
-//  Created by Anton Rivera on 4/28/14.
+//  Created by Anton Rivera on 5/9/14.
 //  Copyright (c) 2014 Anton Hilario Rivera. All rights reserved.
 //
 
-#import "ARMatchDetailViewController.h"
+#import "ARKnockoutDetailViewController.h"
 
-@interface ARMatchDetailViewController ()
+@interface ARKnockoutDetailViewController ()
 
 @property (nonatomic, strong) UIPanGestureRecognizer *panRecognizer;
 @property (nonatomic, strong) NSDate *dateFromString1, *dateFromString2;
-@property (weak, nonatomic) IBOutlet UIImageView *teamOneImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *teamTwoImageView;
+@property (weak, nonatomic) IBOutlet UILabel *matchStringLabel;
 @property (weak, nonatomic) IBOutlet UILabel *brazilMatchTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *yourMatchTimeLabel;
 @property (nonatomic, strong) IBOutlet UIDatePicker *popUpDatePicker;
@@ -22,14 +21,14 @@
 
 @end
 
-@implementation ARMatchDetailViewController
+@implementation ARKnockoutDetailViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.navigationItem.title = _match.matchString;
-    //[self setUpTeamFlags];
+    _matchStringLabel.text = _match.matchString;
     
     [self findMatchTime];
     [self printMatchTime];
@@ -37,12 +36,6 @@
     [self setUpReminderButton];
     [self setUpDatePicker];
     [self setUpCancelButton];
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self setUpTeamFlags];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -161,69 +154,24 @@
 
 #pragma mark - Helper methods
 
-- (void)setUpTeamFlags
-{
-    _teamOneImageView.layer.cornerRadius = 38;
-    _teamOneImageView.layer.masksToBounds = NO;
-    _teamOneImageView.clipsToBounds = YES;
-    _teamOneImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", _match.homeTeamName]];
-    
-    _teamTwoImageView.layer.cornerRadius = 38;
-    _teamTwoImageView.layer.masksToBounds = NO;
-    _teamTwoImageView.clipsToBounds = YES;
-    _teamTwoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", _match.awayTeamName]];
-}
-
 - (void)findMatchTime
 {
-    NSDictionary *matchDictionary = @{@"Brazil vs Croatia"                  :@"06-12-2014 05:00PM",
-                                      @"Mexico vs Cameroon"                 :@"06-13-2014 01:00PM",
-                                      @"Spain vs Netherlands"               :@"06-13-2014 04:00PM",
-                                      @"Chile vs Australia"                 :@"06-13-2014 06:00PM",
-                                      @"Colombia vs Greece"                 :@"06-14-2014 01:00PM",
-                                      @"Uruguay vs Costa Rica"              :@"06-14-2014 04:00PM",
-                                      @"England vs Italy"                   :@"06-14-2014 06:00PM",
-                                      @"Ivory Coast vs Japan"               :@"06-14-2014 10:00PM",
-                                      @"Switzerland vs Ecuador"             :@"06-15-2014 01:00PM",
-                                      @"France vs Honduras"                 :@"06-15-2014 04:00PM",
-                                      @"Argentina vs Bosnia Herzegovina"    :@"06-15-2014 07:00PM",
-                                      @"Germany vs Portugal"                :@"06-16-2014 01:00PM",
-                                      @"Iran vs Nigeria"                    :@"06-16-2014 04:00PM",
-                                      @"Ghana vs USA"                       :@"06-16-2014 07:00PM",
-                                      @"Belgium vs Algeria"                 :@"06-17-2014 01:00PM",
-                                      @"Brazil vs Mexico"                   :@"06-17-2014 04:00PM",
-                                      @"Russia vs Korea Republic"           :@"06-17-2014 06:00PM",
-                                      @"Australia vs Netherlands"           :@"06-18-2014 01:00PM",
-                                      @"Spain vs Chile"                     :@"06-18-2014 04:00PM",
-                                      @"Cameroon vs Croatia"                :@"06-18-2014 06:00PM",
-                                      @"Colombia vs Ivory Coast"            :@"06-19-2014 01:00PM",
-                                      @"Uruguay vs England"                 :@"06-19-2014 04:00PM",
-                                      @"Japan vs Greece"                    :@"06-19-2014 07:00PM",
-                                      @"Italy vs Costa Rica"                :@"06-20-2014 01:00PM",
-                                      @"Switzerland vs France"              :@"06-20-2014 04:00PM",
-                                      @"Honduras vs Ecuador"                :@"06-20-2014 07:00PM",
-                                      @"Argentina vs Iran"                  :@"06-21-2014 01:00PM",
-                                      @"Germany vs Ghana"                   :@"06-21-2014 04:00PM",
-                                      @"Nigeria vs Bosnia Herzegovina"      :@"06-21-2014 06:00PM",
-                                      @"Belgium vs Russia"                  :@"06-22-2014 01:00PM",
-                                      @"Korea Republic vs Algeria"          :@"06-22-2014 04:00PM",
-                                      @"USA vs Portugal"                    :@"06-22-2014 06:00PM",
-                                      @"Netherlands vs Chile"               :@"06-23-2014 01:00PM",
-                                      @"Australia vs Spain"                 :@"06-23-2014 01:00PM",
-                                      @"Cameroon vs Brazil"                 :@"06-23-2014 05:00PM",
-                                      @"Croatia vs Mexico"                  :@"06-23-2014 05:00PM",
-                                      @"Italy vs Uruguay"                   :@"06-24-2014 01:00PM",
-                                      @"Costa Rica vs England"              :@"06-24-2014 01:00PM",
-                                      @"Japan vs Colombia"                  :@"06-24-2014 05:00PM",
-                                      @"Greece vs Ivory Coast"              :@"06-24-2014 05:00PM",
-                                      @"Nigeria vs Argentina"               :@"06-25-2014 01:00PM",
-                                      @"Bosnia Herzegovina vs Iran"         :@"06-25-2014 01:00PM",
-                                      @"Honduras vs Switzerland"            :@"06-25-2014 05:00PM",
-                                      @"Ecuador vs France"                  :@"06-25-2014 05:00PM",
-                                      @"Portugal vs Ghana"                  :@"06-26-2014 01:00PM",
-                                      @"USA vs Germany"                     :@"06-26-2014 01:00PM",
-                                      @"Korea Republic vs Belgium"          :@"06-26-2014 05:00PM",
-                                      @"Algeria vs Russia"                  :@"06-26-2014 05:00PM"};
+    NSDictionary *matchDictionary = @{@"1A vs 2B"                           :@"06-28-2014 01:00PM",
+                                      @"1C vs 2D"                           :@"06-28-2014 05:00PM",
+                                      @"1B vs 2A"                           :@"06-29-2014 01:00PM",
+                                      @"1D vs 2C"                           :@"06-29-2014 05:00PM",
+                                      @"1E vs 2F"                           :@"06-30-2014 01:00PM",
+                                      @"1G vs 2H"                           :@"06-30-2014 05:00PM",
+                                      @"1F vs 2E"                           :@"07-01-2014 01:00PM",
+                                      @"1H vs 2G"                           :@"07-01-2014 05:00PM",
+                                      @"W53 vs W54"                         :@"07-04-2014 01:00PM",
+                                      @"W49 vs W50"                         :@"07-04-2014 05:00PM",
+                                      @"W55 vs W56"                         :@"07-05-2014 01:00PM",
+                                      @"W51 vs W52"                         :@"07-05-2014 05:00PM",
+                                      @"W57 vs W58"                         :@"07-08-2014 05:00PM",
+                                      @"W59 vs W60"                         :@"07-09-2014 05:00PM",
+                                      @"Third-Place"                        :@"07-12-2014 05:00PM",
+                                      @"Final"                              :@"07-13-2014 04:00PM"};
     
     _match.matchTime = [matchDictionary objectForKey:_match.matchString];
     
