@@ -42,6 +42,7 @@
     _tableView.userInteractionEnabled = NO;
     
     _tapToClose = [UITapGestureRecognizer new];
+    _menuIsOpen = NO;
     
     [self setUpChildViewControllers];
     [self setUpDrag];
@@ -77,6 +78,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    [cell.textLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:17]];
     cell.textLabel.text = [self.arrayOfViewControllers[indexPath.row] title];
     
     return cell;
@@ -198,21 +200,37 @@
     
     CGPoint translatedPoint = [pan translationInView:self.view];
     
-    if (pan.state == UIGestureRecognizerStateChanged) {
-        if (translatedPoint.x > 0) {
-            _topViewController.view.center = CGPointMake(_topViewController.view.center.x + translatedPoint.x, _topViewController.view.center.y);
-            
-            [pan setTranslation:CGPointZero inView:self.view];
+    if (_menuIsOpen == NO) {
+        if (pan.state == UIGestureRecognizerStateChanged) {
+            if (translatedPoint.x > 0) {
+                _topViewController.view.center = CGPointMake(_topViewController.view.center.x + translatedPoint.x, _topViewController.view.center.y);
+                [pan setTranslation:CGPointZero inView:self.view];
+            }
+        }
+        if (pan.state == UIGestureRecognizerStateEnded) {
+            if (_topViewController.view.frame.origin.x > self.view.frame.size.width / 5) {
+                [self openMenu];
+            } else {
+                [UIView animateWithDuration:.3 animations:^{
+                    _topViewController.view.frame = CGRectMake(0, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
+                }];
+            }
         }
     }
     
-    if (pan.state == UIGestureRecognizerStateEnded) {
-        if (_topViewController.view.frame.origin.x > self.view.frame.size.width / 5) {
-            [self openMenu];
-        } else {
-            [UIView animateWithDuration:.3 animations:^{
-                _topViewController.view.frame = CGRectMake(0, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
-            }];
+    if (_menuIsOpen) {
+        if (translatedPoint.x < 0) {
+            _topViewController.view.center = CGPointMake(_topViewController.view.center.x + translatedPoint.x, _topViewController.view.center.y);
+            [pan setTranslation:CGPointZero inView:self.view];
+        }
+        if (pan.state == UIGestureRecognizerStateEnded) {
+            if (_topViewController.view.frame.origin.x < self.view.frame.size.width / 2) {
+                [self closeMenu];
+            } else {
+                [UIView animateWithDuration:.3 animations:^{
+                    _topViewController.view.frame = CGRectMake(self.view.frame.size.width * 0.75, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
+                }];
+            }
         }
     }
 }
@@ -223,7 +241,7 @@
         _topViewController.view.frame = CGRectMake(self.view.frame.size.width * 0.75, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
     } completion:^(BOOL finished) {
         if (finished) {
-            [_tapToClose addTarget:self action:@selector(closeMenu:)];
+            [_tapToClose addTarget:self action:@selector(closeMenu)];
             [_topViewController.view addGestureRecognizer:_tapToClose];
             _menuIsOpen = YES;
             _tableView.userInteractionEnabled = YES;
@@ -231,7 +249,7 @@
     }];
 }
 
-- (void)closeMenu:(id)sender
+- (void)closeMenu
 {
     [UIView animateWithDuration:.3 animations:^{
         _topViewController.view.frame = self.view.frame;
@@ -259,7 +277,7 @@
         
         [_topViewController didMoveToParentViewController:self];
         
-        [self closeMenu:nil];
+        [self closeMenu];
     }];
 }
 

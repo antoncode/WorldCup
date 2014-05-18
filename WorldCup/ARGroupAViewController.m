@@ -54,6 +54,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
     ARMatch *match = [_arrayOfMatches objectAtIndex:indexPath.row];
+    [cell.textLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:17]];
     cell.textLabel.text = match.matchString;
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
     

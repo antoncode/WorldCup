@@ -48,7 +48,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self setupPanGesture];
+//    [self setupPanGesture];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -149,15 +149,23 @@
 
 #pragma mark - Gesture Recognizers
 
-- (void)setupPanGesture
-{
-    _panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self.navigationController action:@selector(popViewControllerAnimated:)];
-    
-    _panRecognizer.minimumNumberOfTouches = 1;
-    _panRecognizer.maximumNumberOfTouches = 1;
-    
-    [self.view addGestureRecognizer:_panRecognizer];
-}
+//- (void)setupPanGesture
+//{
+//    _panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self.navigationController action:@selector(closeMatchDetail)];
+//    
+//    _panRecognizer.minimumNumberOfTouches = 1;
+//    _panRecognizer.maximumNumberOfTouches = 1;
+//    
+//    [self.view addGestureRecognizer:_panRecognizer];
+//}
+//
+//- (void)closeMatchDetail
+//{
+//    if (<#condition#>) {
+//        <#statements#>
+//    }
+//    [self.navigationController popToViewController:self animated:YES];
+//}
 
 #pragma mark - Helper methods
 

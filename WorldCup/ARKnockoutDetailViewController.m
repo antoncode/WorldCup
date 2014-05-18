@@ -10,7 +10,7 @@
 
 @interface ARKnockoutDetailViewController ()
 
-@property (nonatomic, strong) UIPanGestureRecognizer *panRecognizer;
+//@property (nonatomic, strong) UIPanGestureRecognizer *panRecognizer;
 @property (nonatomic, strong) NSDate *dateFromString1, *dateFromString2;
 @property (weak, nonatomic) IBOutlet UILabel *matchStringLabel;
 @property (weak, nonatomic) IBOutlet UILabel *brazilMatchTimeLabel;
@@ -41,13 +41,13 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self setupPanGesture];
+//    [self setupPanGesture];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [self.view removeGestureRecognizer:_panRecognizer];
+//    [self.view removeGestureRecognizer:_panRecognizer];
 }
 
 #pragma mark - Reminder methods
@@ -142,15 +142,15 @@
 
 #pragma mark - Gesture Recognizers
 
-- (void)setupPanGesture
-{
-    _panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self.navigationController action:@selector(popViewControllerAnimated:)];
-    
-    _panRecognizer.minimumNumberOfTouches = 1;
-    _panRecognizer.maximumNumberOfTouches = 1;
-    
-    [self.view addGestureRecognizer:_panRecognizer];
-}
+//- (void)setupPanGesture
+//{
+//    _panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self.navigationController action:@selector(popViewControllerAnimated:)];
+//    
+//    _panRecognizer.minimumNumberOfTouches = 1;
+//    _panRecognizer.maximumNumberOfTouches = 1;
+//    
+//    [self.view addGestureRecognizer:_panRecognizer];
+//}
 
 #pragma mark - Helper methods
 
