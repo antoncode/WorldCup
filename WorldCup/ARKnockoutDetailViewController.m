@@ -13,8 +13,8 @@
 //@property (nonatomic, strong) UIPanGestureRecognizer *panRecognizer;
 @property (nonatomic, strong) NSDate *dateFromString1, *dateFromString2;
 @property (weak, nonatomic) IBOutlet UILabel *matchStringLabel;
-@property (weak, nonatomic) IBOutlet UILabel *brazilMatchTimeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *yourMatchTimeLabel;
+@property (weak, nonatomic) IBOutlet UIButton *yourMatchTimeButton;
+@property (weak, nonatomic) IBOutlet UIButton *brazilMatchTimeButton;
 @property (nonatomic, strong) IBOutlet UIDatePicker *popUpDatePicker;
 @property (nonatomic, strong) IBOutlet UIButton *setReminderButton;
 @property (nonatomic, strong) IBOutlet UIButton *cancelReminderButton;
@@ -193,8 +193,8 @@
     NSString *stringFromDate1 = [formatter stringFromDate:_dateFromString1];
     NSString *stringFromDate2 = [formatter stringFromDate:_dateFromString2];
     
-    _yourMatchTimeLabel.text = stringFromDate1;
-    _brazilMatchTimeLabel.text = stringFromDate2;
+    [_yourMatchTimeButton setTitle:stringFromDate1 forState:UIControlStateNormal];
+    [_brazilMatchTimeButton setTitle:stringFromDate2 forState:UIControlStateNormal];
 }
 
 
