@@ -9,6 +9,7 @@
 #import "ARCountdownViewController.h"
 
 @interface ARCountdownViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *daysToGoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *hoursToGoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *minutesToGoLabel;
@@ -27,25 +28,25 @@
     timer = [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(bounceCountdownViewController) userInfo:nil repeats:NO];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    NSTimer *timer = [NSTimer new];
+    timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
+}
+
 - (void)bounceCountdownViewController
 {
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.4 animations:^{
         self.view.center = CGPointMake(self.view.center.x + self.view.frame.size.width / 5, self.view.center.y);
     } completion:^(BOOL finished) {
         if (finished) {
-            [UIView animateWithDuration:0.5 animations:^{
+            [UIView animateWithDuration:0.4 animations:^{
                 self.view.center = CGPointMake(self.view.center.x - self.view.frame.size.width / 5, self.view.center.y);
             }];
         }
     }];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    NSTimer *timer = [NSTimer new];
-    timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
 }
 
 - (void)updateTimer
@@ -129,6 +130,5 @@
         _untilLabel.text = @"";
     }
 }
-
 
 @end

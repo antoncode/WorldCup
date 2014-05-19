@@ -7,11 +7,14 @@
 //
 
 #import "ARMatchDetailViewController.h"
+#import "ARWebViewController.h"
 
 @interface ARMatchDetailViewController ()
 
 @property (nonatomic, strong) UIPanGestureRecognizer *panRecognizer;
 @property (nonatomic, strong) NSDate *dateFromString1, *dateFromString2;
+@property (weak, nonatomic) IBOutlet UIButton *teamOneButton;
+@property (weak, nonatomic) IBOutlet UIButton *teamTwoButton;
 @property (weak, nonatomic) IBOutlet UIImageView *teamOneImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *teamTwoImageView;
 @property (weak, nonatomic) IBOutlet UIButton *yourMatchTimeButton;
@@ -19,6 +22,7 @@
 @property (nonatomic, strong) IBOutlet UIDatePicker *popUpDatePicker;
 @property (nonatomic, strong) IBOutlet UIButton *setReminderButton;
 @property (nonatomic, strong) IBOutlet UIButton *cancelReminderButton;
+@property (nonatomic, strong) NSString *teamURL;
 
 @end
 
@@ -171,15 +175,17 @@
 
 - (void)setUpTeamFlags
 {
-    _teamOneImageView.layer.cornerRadius = 38;
-    _teamOneImageView.layer.masksToBounds = NO;
-    _teamOneImageView.clipsToBounds = YES;
-    _teamOneImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", _match.homeTeamName]];
+    UIImage *teamOneImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", _match.homeTeamName]];
+    _teamOneButton.layer.cornerRadius = 38;
+    _teamOneButton.layer.masksToBounds = YES;
+    _teamOneButton.clipsToBounds = YES;
+    [_teamOneButton setImage:teamOneImage forState:UIControlStateNormal];
     
-    _teamTwoImageView.layer.cornerRadius = 38;
-    _teamTwoImageView.layer.masksToBounds = NO;
-    _teamTwoImageView.clipsToBounds = YES;
-    _teamTwoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", _match.awayTeamName]];
+    UIImage *teamTwoImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", _match.awayTeamName]];
+    _teamTwoButton.layer.cornerRadius = 38;
+    _teamTwoButton.layer.masksToBounds = YES;
+    _teamTwoButton.clipsToBounds = YES;
+    [_teamTwoButton setImage:teamTwoImage forState:UIControlStateNormal];
 }
 
 - (void)findMatchTime
@@ -257,5 +263,56 @@
     [_brazilMatchTimeButton setTitle:stringFromDate2 forState:UIControlStateNormal];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"showHomeWebView"]) {
+        _teamURL = [self retrieveTeamURL:_match.homeTeamName];
+        ARWebViewController *wvc = (ARWebViewController *)segue.destinationViewController;
+        wvc.teamURL = _teamURL;
+    } else if ([segue.identifier isEqualToString:@"showAwayWebView"]) {
+        _teamURL = [self retrieveTeamURL:_match.awayTeamName];
+        ARWebViewController *wvc = (ARWebViewController *)segue.destinationViewController;
+        wvc.teamURL = _teamURL;
+    }
+}
+
+- (NSString *)retrieveTeamURL:(NSString *)teamName
+{
+    NSDictionary *codeURLDictionary = @{@"Brazil"               :@"43924",
+                                        @"Croatia"              :@"43938",
+                                        @"Mexico"               :@"43911",
+                                        @"Cameroon"             :@"43849",
+                                        @"Spain"                :@"43969",
+                                        @"Netherlands"          :@"43960",
+                                        @"Chile"                :@"43925",
+                                        @"Australia"            :@"43976",
+                                        @"Colombia"             :@"43926",
+                                        @"Greece"               :@"43949",
+                                        @"Ivory Coast"          :@"43854",
+                                        @"Japan"                :@"43819",
+                                        @"Uruguay"              :@"43930",
+                                        @"Costa Rica"           :@"43901",
+                                        @"England"              :@"43942",
+                                        @"Italy"                :@"43954",
+                                        @"Switzerland"          :@"43971",
+                                        @"Ecuador"              :@"43927",
+                                        @"France"               :@"43946",
+                                        @"Honduras"             :@"43909",
+                                        @"Argentina"            :@"43922",
+                                        @"Bosnia Herzegovina"   :@"44037",
+                                        @"Iran"                 :@"43817",
+                                        @"Nigeria"              :@"43876",
+                                        @"Germany"              :@"43948",
+                                        @"Portugal"             :@"43963",
+                                        @"Ghana"                :@"43860",
+                                        @"USA"                  :@"43921",
+                                        @"Belgium"              :@"43935",
+                                        @"Algeria"              :@"43843",
+                                        @"Russia"               :@"43965",
+                                        @"Korea Republic"       :@"43822"};
+    
+    NSString *tempTeamURL = [NSString stringWithFormat:@"http://m.fifa.com/worldcup/teams/team=%@", [codeURLDictionary objectForKey:teamName]];
+    return tempTeamURL;
+}
 
 @end

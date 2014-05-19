@@ -62,6 +62,7 @@
 		3A50AB8919187D5600ABD9E7 /* ARGroupFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A50AB8819187D5600ABD9E7 /* ARGroupFViewController.m */; };
 		3A50AB8C19187D6200ABD9E7 /* ARGroupGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A50AB8B19187D6200ABD9E7 /* ARGroupGViewController.m */; };
 		3A50AB8F19187D7300ABD9E7 /* ARGroupHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A50AB8E19187D7300ABD9E7 /* ARGroupHViewController.m */; };
+		3A6337DB192967FD00C6F072 /* ARWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6337DA192967FD00C6F072 /* ARWebViewController.m */; };
 		3AB08D67190F1067009ABA2C /* ARMatchDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB08D66190F1067009ABA2C /* ARMatchDetailViewController.m */; };
 		3AB08D6A190F28B1009ABA2C /* ARMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB08D69190F28B1009ABA2C /* ARMatch.m */; };
 		3AB08D7019101C40009ABA2C /* ARCountdownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB08D6F19101C40009ABA2C /* ARCountdownViewController.m */; };
@@ -153,6 +154,8 @@
 		3A50AB8B19187D6200ABD9E7 /* ARGroupGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARGroupGViewController.m; sourceTree = "<group>"; };
 		3A50AB8D19187D7300ABD9E7 /* ARGroupHViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARGroupHViewController.h; sourceTree = "<group>"; };
 		3A50AB8E19187D7300ABD9E7 /* ARGroupHViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARGroupHViewController.m; sourceTree = "<group>"; };
+		3A6337D9192967FD00C6F072 /* ARWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARWebViewController.h; sourceTree = "<group>"; };
+		3A6337DA192967FD00C6F072 /* ARWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARWebViewController.m; sourceTree = "<group>"; };
 		3AB08D65190F1067009ABA2C /* ARMatchDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARMatchDetailViewController.h; sourceTree = "<group>"; };
 		3AB08D66190F1067009ABA2C /* ARMatchDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARMatchDetailViewController.m; sourceTree = "<group>"; };
 		3AB08D68190F28B1009ABA2C /* ARMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARMatch.h; sourceTree = "<group>"; };
@@ -356,6 +359,8 @@
 				3A50AB9019189E1200ABD9E7 /* Group View Controllers */,
 				3AB08D65190F1067009ABA2C /* ARMatchDetailViewController.h */,
 				3AB08D66190F1067009ABA2C /* ARMatchDetailViewController.m */,
+				3A6337D9192967FD00C6F072 /* ARWebViewController.h */,
+				3A6337DA192967FD00C6F072 /* ARWebViewController.m */,
 				3A1D56391919745700891751 /* Knockout Stages View Controllers */,
 				3A39A85F191D347800315E05 /* ARKnockoutDetailViewController.h */,
 				3A39A860191D347800315E05 /* ARKnockoutDetailViewController.m */,
@@ -569,6 +574,7 @@
 				3A50AB8F19187D7300ABD9E7 /* ARGroupHViewController.m in Sources */,
 				3AB08D7819117946009ABA2C /* ARRootMenuViewController.m in Sources */,
 				3AB08D67190F1067009ABA2C /* ARMatchDetailViewController.m in Sources */,
+				3A6337DB192967FD00C6F072 /* ARWebViewController.m in Sources */,
 				3A40E9D2190EE5AB00B6AB03 /* ARAppDelegate.m in Sources */,
 				3A50AB8619187D4800ABD9E7 /* ARGroupEViewController.m in Sources */,
 				3A50AB8919187D5600ABD9E7 /* ARGroupFViewController.m in Sources */,

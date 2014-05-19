@@ -160,22 +160,7 @@
     
     _arrayOfViewControllers = @[countdownNavControl, groupANavControl, groupBNavControl, groupCNavControl, groupDNavControl, groupENavControl, groupFNavControl, groupGNavControl, groupHNavControl, roundOfSixteenNavControl, quarterFinalNavControl, semiFinalNavControl, finalNavControl];
     
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDate *now = [NSDate date];
-    NSDateComponents *kickOffComponents = [NSDateComponents new];
-    [kickOffComponents setYear:2014];
-    [kickOffComponents setMonth:6];
-    [kickOffComponents setDay:12];
-    [kickOffComponents setHour:13];
-    [kickOffComponents setMinute:0];
-    [kickOffComponents setSecond:0];
-    NSDate *kickOffDate = [calendar dateFromComponents:kickOffComponents];
-    if ([now compare:kickOffDate] == NSOrderedAscending) {
-        _topViewController = _arrayOfViewControllers[0];
-    } else {
-        // World Cup has started, countdown zeroed out
-        _topViewController = _arrayOfViewControllers[1];
-    }
+    _topViewController = _arrayOfViewControllers[0];
     
     [self addChildViewController:_topViewController];
     [self.view addSubview:_topViewController.view];
@@ -185,10 +170,8 @@
 - (void)setUpDrag
 {
     _panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(movePanel:)];
-    
     _panRecognizer.minimumNumberOfTouches = 1;
     _panRecognizer.maximumNumberOfTouches = 1;
-    
     _panRecognizer.delegate = self;
     
     [self.view addGestureRecognizer:_panRecognizer];
@@ -197,7 +180,6 @@
 - (void)movePanel:(id)sender
 {
     UIPanGestureRecognizer *pan = (UIPanGestureRecognizer *)sender;
-    
     CGPoint translatedPoint = [pan translationInView:self.view];
     
     if (_menuIsOpen == NO) {
