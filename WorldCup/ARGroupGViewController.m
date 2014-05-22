@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) NSArray *groupG;
 @property (nonatomic, strong) NSMutableArray *arrayOfMatches;
+@property (nonatomic, strong) NSDictionary *matchTimeDictionary;
 
 @end
 
@@ -32,6 +33,7 @@
     _arrayOfMatches = [NSMutableArray new];
     
     [self createGroupG];
+    [self setUpMatchTimeDictionary];
     [self setUpMatches];
 }
 
@@ -56,7 +58,7 @@
     ARMatch *match = [_arrayOfMatches objectAtIndex:indexPath.row];
     [cell.textLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:17]];
     cell.textLabel.text = match.matchString;
-    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    cell.detailTextLabel.text = [self printMatchTime:match.matchTime];
     
     return cell;
 }
@@ -93,6 +95,7 @@
                 match.matchString = [NSString stringWithFormat:@"%@ vs %@", [_groupG objectAtIndex:x], [_groupG objectAtIndex:y]];
                 match.homeTeamName = [_groupG objectAtIndex:x];
                 match.awayTeamName = [_groupG objectAtIndex:y];
+                match.matchTime = [_matchTimeDictionary objectForKey:match.matchString];
                 [_arrayOfMatches addObject:match];
             }
         }
@@ -118,6 +121,32 @@
     match = [_arrayOfMatches objectAtIndex:5];
     [_arrayOfMatches removeObjectAtIndex:5];
     [_arrayOfMatches insertObject:match atIndex:4];
+}
+
+- (void)setUpMatchTimeDictionary
+{
+    _matchTimeDictionary = @{@"Germany vs Portugal"                :@"06-16-2014 01:00PM",
+                             @"Ghana vs USA"                       :@"06-16-2014 07:00PM",
+                             @"Germany vs Ghana"                   :@"06-21-2014 04:00PM",
+                             @"USA vs Portugal"                    :@"06-22-2014 07:00PM",
+                             @"Portugal vs Ghana"                  :@"06-26-2014 01:00PM",
+                             @"USA vs Germany"                     :@"06-26-2014 01:00PM"};
+}
+
+- (NSString *)printMatchTime:(NSString *)matchTime
+{
+    NSDate *dateFromString = [NSDate new];
+    
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"MM-dd-yyyy hh:mma"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"America/Sao_Paulo"]];
+    dateFromString = [dateFormatter dateFromString:matchTime];
+    
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"MMMM dd h:mma"];
+    NSString *stringFromDate = [formatter stringFromDate:dateFromString];
+    
+    return stringFromDate;
 }
 
 @end

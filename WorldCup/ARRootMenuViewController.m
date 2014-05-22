@@ -8,6 +8,7 @@
 
 #import "ARRootMenuViewController.h"
 #import "ARCountdownViewController.h"
+#import "ARTeamsViewController.h"
 #import "ARGroupAViewController.h"
 #import "ARGroupBViewController.h"
 #import "ARGroupCViewController.h"
@@ -98,6 +99,11 @@
     UINavigationController *countdownNavControl = [[UINavigationController alloc] initWithRootViewController:countdownViewController];
     [countdownNavControl setNavigationBarHidden:YES animated:NO];
     
+    ARTeamsViewController *teamsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"teams"];
+    teamsViewController.title = @"Teams";
+    UINavigationController *teamsNavControl = [[UINavigationController alloc] initWithRootViewController:teamsViewController];
+    [teamsNavControl setNavigationBarHidden:NO animated:NO];
+    
     ARGroupAViewController *groupAViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"groupA"];
     groupAViewController.title = @"Group A";
     UINavigationController *groupANavControl = [[UINavigationController alloc] initWithRootViewController:groupAViewController];
@@ -158,7 +164,7 @@
     UINavigationController *finalNavControl = [[UINavigationController alloc] initWithRootViewController:finalViewController];
     [finalNavControl setNavigationBarHidden:NO animated:NO];
     
-    _arrayOfViewControllers = @[countdownNavControl, groupANavControl, groupBNavControl, groupCNavControl, groupDNavControl, groupENavControl, groupFNavControl, groupGNavControl, groupHNavControl, roundOfSixteenNavControl, quarterFinalNavControl, semiFinalNavControl, finalNavControl];
+    _arrayOfViewControllers = @[countdownNavControl, teamsNavControl, groupANavControl, groupBNavControl, groupCNavControl, groupDNavControl, groupENavControl, groupFNavControl, groupGNavControl, groupHNavControl, finalNavControl];
     
     _topViewController = _arrayOfViewControllers[0];
     

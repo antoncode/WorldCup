@@ -25,7 +25,9 @@
     [super viewDidLoad];
     
     NSTimer *timer = [NSTimer new];
-    timer = [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(bounceCountdownViewController) userInfo:nil repeats:NO];
+    timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(bounceCountdownViewController) userInfo:nil repeats:NO];
+    
+    [self updateTimer];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -38,27 +40,31 @@
 
 - (void)bounceCountdownViewController
 {
-    [UIView animateWithDuration:0.4 animations:^{
-        self.view.center = CGPointMake(self.view.center.x + self.view.frame.size.width / 5, self.view.center.y);
-    } completion:^(BOOL finished) {
-        if (finished) {
-            [UIView animateWithDuration:0.4 animations:^{
-                self.view.center = CGPointMake(self.view.center.x - self.view.frame.size.width / 5, self.view.center.y);
-            }];
-        }
-    }];
+    if (self.navigationController.view.frame.origin.x < 80) // Check if menu is already open
+    {
+        [UIView animateWithDuration:0.4 animations:^{
+            self.view.center = CGPointMake(self.view.center.x + self.view.frame.size.width / 5, self.view.center.y);
+        } completion:^(BOOL finished) {
+            if (finished) {
+                [UIView animateWithDuration:0.4 animations:^{
+                    self.view.center = CGPointMake(self.view.center.x - self.view.frame.size.width / 5, self.view.center.y);
+                }];
+            }
+        }];
+    }
 }
 
 - (void)updateTimer
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
+    [calendar setTimeZone:[NSTimeZone timeZoneWithName:@"America/Sao_Paulo"]];
     NSDate *now = [NSDate date];
 
     NSDateComponents *kickOffComponents = [NSDateComponents new];
     [kickOffComponents setYear:2014];
     [kickOffComponents setMonth:6];
     [kickOffComponents setDay:12];
-    [kickOffComponents setHour:13];
+    [kickOffComponents setHour:17];
     [kickOffComponents setMinute:0];
     [kickOffComponents setSecond:0];
     NSDate *kickOffDate = [calendar dateFromComponents:kickOffComponents];
@@ -67,7 +73,7 @@
     [finalMatchComponents setYear:2014];
     [finalMatchComponents setMonth:7];
     [finalMatchComponents setDay:13];
-    [finalMatchComponents setHour:12];
+    [finalMatchComponents setHour:16];
     [finalMatchComponents setMinute:0];
     [finalMatchComponents setSecond:0];
     NSDate *finalMatchDate = [calendar dateFromComponents:finalMatchComponents];
@@ -83,17 +89,17 @@
                                                         fromDate:now
                                                           toDate:kickOffDate
                                                          options:0];
-        _hoursToGoLabel.text = [NSString stringWithFormat:@"%02ld", (componentsHours.hour%24)];
+        _hoursToGoLabel.text = [NSString stringWithFormat:@"%02ld", (long)(componentsHours.hour%24)];
         NSDateComponents *componentsMinutes = [calendar components:NSMinuteCalendarUnit
                                                           fromDate:now
                                                             toDate:kickOffDate
                                                            options:0];
-        _minutesToGoLabel.text = [NSString stringWithFormat:@"%02ld", (componentsMinutes.minute%60)];
+        _minutesToGoLabel.text = [NSString stringWithFormat:@"%02ld", (long)(componentsMinutes.minute%60)];
         NSDateComponents *componentsSeconds = [calendar components:NSSecondCalendarUnit
                                                           fromDate:now
                                                             toDate:kickOffDate
                                                            options:0];
-        _secondsToGoLabel.text = [NSString stringWithFormat:@"%02ld", (componentsSeconds.second%60)];
+        _secondsToGoLabel.text = [NSString stringWithFormat:@"%02ld", (long)(componentsSeconds.second%60)];
         
         _untilLabel.text = @"to first match";
         
@@ -108,17 +114,17 @@
                                                         fromDate:now
                                                           toDate:finalMatchDate
                                                          options:0];
-        _hoursToGoLabel.text = [NSString stringWithFormat:@"%02ld", (componentsHours.hour%24)];
+        _hoursToGoLabel.text = [NSString stringWithFormat:@"%02ld", (long)(componentsHours.hour%24)];
         NSDateComponents *componentsMinutes = [calendar components:NSMinuteCalendarUnit
                                                           fromDate:now
                                                             toDate:finalMatchDate
                                                            options:0];
-        _minutesToGoLabel.text = [NSString stringWithFormat:@"%02ld", (componentsMinutes.minute%60)];
+        _minutesToGoLabel.text = [NSString stringWithFormat:@"%02ld", (long)(componentsMinutes.minute%60)];
         NSDateComponents *componentsSeconds = [calendar components:NSSecondCalendarUnit
                                                           fromDate:now
                                                             toDate:finalMatchDate
                                                            options:0];
-        _secondsToGoLabel.text = [NSString stringWithFormat:@"%02ld", (componentsSeconds.second%60)];
+        _secondsToGoLabel.text = [NSString stringWithFormat:@"%02ld", (long)(componentsSeconds.second%60)];
         
         _untilLabel.text = @"to final match";
         
