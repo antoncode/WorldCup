@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) NSArray *arrayOfMatchStrings;
 @property (nonatomic, strong) NSMutableArray *arrayOfMatches;
+@property (nonatomic, strong) NSDictionary *matchTimeDictionary;
 
 @end
 
@@ -32,6 +33,7 @@
     _arrayOfMatches = [NSMutableArray new];
     
     [self createArrayOfMatchStrings];
+    [self setUpMatchTimeDictionary];
     [self setUpMatches];
 }
 
@@ -55,8 +57,8 @@
     ARMatch *match = [_arrayOfMatches objectAtIndex:indexPath.row];
     [cell.textLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:17]];
     cell.textLabel.text = match.matchString;
-    cell.textLabel.textAlignment = NSTextAlignmentCenter;
-    
+    cell.detailTextLabel.text = [self printMatchTime:match.matchTime];
+
     return cell;
 }
 
@@ -89,8 +91,31 @@
     for (NSInteger x=0; x<_arrayOfMatchStrings.count; x++) {
         ARMatch *match = [ARMatch new];
         match.matchString = [NSString stringWithFormat:@"%@", [_arrayOfMatchStrings objectAtIndex:x]];
+        match.matchTime = [_matchTimeDictionary objectForKey:match.matchString];
         [_arrayOfMatches addObject:match];
     }
+}
+
+- (void)setUpMatchTimeDictionary
+{
+    _matchTimeDictionary = @{@"W57 vs W58"                         :@"07-08-2014 05:00PM",
+                             @"W59 vs W60"                         :@"07-09-2014 05:00PM"};
+}
+
+- (NSString *)printMatchTime:(NSString *)matchTime
+{
+    NSDate *dateFromString = [NSDate new];
+    
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"MM-dd-yyyy hh:mma"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"America/Sao_Paulo"]];
+    dateFromString = [dateFormatter dateFromString:matchTime];
+    
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"MMMM dd h:mma"];
+    NSString *stringFromDate = [formatter stringFromDate:dateFromString];
+    
+    return stringFromDate;
 }
 
 @end

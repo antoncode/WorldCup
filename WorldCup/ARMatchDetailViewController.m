@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *teamOneImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *teamTwoImageView;
 @property (weak, nonatomic) IBOutlet UIButton *yourMatchTimeButton;
-@property (weak, nonatomic) IBOutlet UIButton *brazilMatchTimeButton;
 @property (weak, nonatomic) IBOutlet UILabel *daysToGoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *hoursToGoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *minutesToGoLabel;
@@ -36,8 +35,6 @@
     [super viewDidLoad];
     
     self.navigationItem.title = _match.matchString;
-    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName]];
-    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     
     [self setUpTeamFlags];
     [self findMatchTime];
@@ -183,23 +180,16 @@
 
 - (void)findMatchTime
 {
-    NSDateFormatter *dateFormatter1 = [NSDateFormatter new];
-    [dateFormatter1 setDateFormat:@"MM-dd-yyyy hh:mma"];
-    [dateFormatter1 setTimeZone:[NSTimeZone timeZoneWithName:@"America/Sao_Paulo"]];
-    NSDate *dateFromString1 = [dateFormatter1 dateFromString:_match.matchTime];
-    
-    NSDateFormatter *dateFormatter2 = [NSDateFormatter new];
-    [dateFormatter2 setDateFormat:@"MM-dd-yyyy hh:mma"];
-    [dateFormatter2 setTimeZone:[NSTimeZone defaultTimeZone]];
-    NSDate *dateFromString2 = [dateFormatter2 dateFromString:_match.matchTime];
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"MM-dd-yyyy hh:mma"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"America/Sao_Paulo"]];
+    NSDate *dateFromString = [dateFormatter dateFromString:_match.matchTime];
 
     NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateFormat:@"MMMM dd h:mma"];
-    NSString *stringFromDate1 = [formatter stringFromDate:dateFromString1];
-    NSString *stringFromDate2 = [formatter stringFromDate:dateFromString2];
+    NSString *stringFromDate = [formatter stringFromDate:dateFromString];
     
-    [_yourMatchTimeButton setTitle:stringFromDate1 forState:UIControlStateNormal];
-    [_brazilMatchTimeButton setTitle:stringFromDate2 forState:UIControlStateNormal];
+    [_yourMatchTimeButton setTitle:stringFromDate forState:UIControlStateNormal];
 }
 
 - (NSString *)retrieveTeamURL:(NSString *)teamName
@@ -253,7 +243,7 @@
     NSDate *dateFromString = [dateFormatter dateFromString:_match.matchTime];
     
     if ([now compare:dateFromString] == NSOrderedAscending)
-    {   // now is earlier than kickOffDate
+    {   // now is earlier than match time
         NSDateComponents *componentsDays = [calendar components:NSDayCalendarUnit
                                                        fromDate:now
                                                          toDate:dateFromString
@@ -275,7 +265,10 @@
                                                            options:0];
         _secondsToGoLabel.text = [NSString stringWithFormat:@"%02ld", (long)(componentsSeconds.second%60)];
     } else {
-        
+        _daysToGoLabel.text = @"00";
+        _hoursToGoLabel.text = @"00";
+        _minutesToGoLabel.text = @"00";
+        _secondsToGoLabel.text = @"00";
     }
 }
 
