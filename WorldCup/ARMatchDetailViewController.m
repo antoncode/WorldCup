@@ -12,13 +12,16 @@
 @interface ARMatchDetailViewController ()
 
 @property (nonatomic, strong) UIPanGestureRecognizer *panRecognizer;
-@property (nonatomic, strong) NSDate *dateFromString1, *dateFromString2;
 @property (weak, nonatomic) IBOutlet UIButton *teamOneButton;
 @property (weak, nonatomic) IBOutlet UIButton *teamTwoButton;
 @property (weak, nonatomic) IBOutlet UIImageView *teamOneImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *teamTwoImageView;
 @property (weak, nonatomic) IBOutlet UIButton *yourMatchTimeButton;
 @property (weak, nonatomic) IBOutlet UIButton *brazilMatchTimeButton;
+@property (weak, nonatomic) IBOutlet UILabel *daysToGoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *hoursToGoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *minutesToGoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *secondsToGoLabel;
 @property (nonatomic, strong) IBOutlet UIDatePicker *popUpDatePicker;
 @property (nonatomic, strong) IBOutlet UIButton *setReminderButton;
 @property (nonatomic, strong) IBOutlet UIButton *cancelReminderButton;
@@ -35,36 +38,28 @@
     self.navigationItem.title = _match.matchString;
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName]];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.opaque = NO;
-
     
     [self setUpTeamFlags];
     [self findMatchTime];
-    [self printMatchTime];
+    
+    [self updateTimer];
     
     [self setUpReminderButton];
     [self setUpDatePicker];
     [self setUpCancelButton];
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self setUpTeamFlags];
-}
-
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    NSTimer *timer = [NSTimer new];
+    timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    
-    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName]];
-        self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.translucent = YES;
     
     [self.view removeGestureRecognizer:_panRecognizer];
 }
@@ -73,7 +68,6 @@
 
 - (void)setUpReminderButton
 {
-    // Set up reminder button
     _setReminderButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 44)];
     [_setReminderButton setTitle:@"Set reminder" forState:UIControlStateNormal];
     [_setReminderButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -85,13 +79,11 @@
 
 - (void)setUpDatePicker
 {
-    // Set up date picker
     _popUpDatePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 80)];
     _popUpDatePicker.datePickerMode = UIDatePickerModeDateAndTime;
     _popUpDatePicker.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_popUpDatePicker];
     
-    // Set date picker date
     NSDate *dateFromString = [NSDate new];
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     [dateFormatter setDateFormat:@"MM-dd-yyyy hh:mma"];
@@ -102,7 +94,6 @@
 
 - (void)setUpCancelButton
 {
-    // Set up cancel button
     _cancelReminderButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 44)];
     [_cancelReminderButton setTitle:@"Cancel" forState:UIControlStateNormal];
     [_cancelReminderButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -114,11 +105,10 @@
 
 - (IBAction)addReminder:(id)sender
 {
-    // Show date picker
     [UIView animateWithDuration:0.25 animations:^{
         [_setReminderButton setFrame:CGRectMake(0, self.view.frame.size.height/2 - 10, self.view.frame.size.width, 44)];
-        [_popUpDatePicker setFrame:CGRectMake(0, self.view.frame.size.height/2 + 35, self.view.frame.size.width, 80)];
-        [_cancelReminderButton setFrame:CGRectMake(0, self.view.frame.size.height/2 + 198, self.view.frame.size.width, 44)];
+        [_popUpDatePicker setFrame:CGRectMake(0, self.view.frame.size.height/2 + 34, self.view.frame.size.width, 80)];
+        [_cancelReminderButton setFrame:CGRectMake(0, self.view.frame.size.height/2 + 195, self.view.frame.size.width, 44)];
     }];
 }
 
@@ -159,6 +149,21 @@
     }];
 }
 
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"showHomeWebView"]) {
+        _teamURL = [self retrieveTeamURL:_match.homeTeamName];
+        ARWebViewController *wvc = (ARWebViewController *)segue.destinationViewController;
+        wvc.teamURL = _teamURL;
+    } else if ([segue.identifier isEqualToString:@"showAwayWebView"]) {
+        _teamURL = [self retrieveTeamURL:_match.awayTeamName];
+        ARWebViewController *wvc = (ARWebViewController *)segue.destinationViewController;
+        wvc.teamURL = _teamURL;
+    }
+}
+
 #pragma mark - Helper methods
 
 - (void)setUpTeamFlags
@@ -181,36 +186,20 @@
     NSDateFormatter *dateFormatter1 = [NSDateFormatter new];
     [dateFormatter1 setDateFormat:@"MM-dd-yyyy hh:mma"];
     [dateFormatter1 setTimeZone:[NSTimeZone timeZoneWithName:@"America/Sao_Paulo"]];
-    _dateFromString1 = [dateFormatter1 dateFromString:_match.matchTime];
+    NSDate *dateFromString1 = [dateFormatter1 dateFromString:_match.matchTime];
     
     NSDateFormatter *dateFormatter2 = [NSDateFormatter new];
     [dateFormatter2 setDateFormat:@"MM-dd-yyyy hh:mma"];
     [dateFormatter2 setTimeZone:[NSTimeZone defaultTimeZone]];
-    _dateFromString2 = [dateFormatter2 dateFromString:_match.matchTime];
-}
+    NSDate *dateFromString2 = [dateFormatter2 dateFromString:_match.matchTime];
 
-- (void)printMatchTime
-{
     NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateFormat:@"MMMM dd h:mma"];
-    NSString *stringFromDate1 = [formatter stringFromDate:_dateFromString1];
-    NSString *stringFromDate2 = [formatter stringFromDate:_dateFromString2];
+    NSString *stringFromDate1 = [formatter stringFromDate:dateFromString1];
+    NSString *stringFromDate2 = [formatter stringFromDate:dateFromString2];
     
     [_yourMatchTimeButton setTitle:stringFromDate1 forState:UIControlStateNormal];
     [_brazilMatchTimeButton setTitle:stringFromDate2 forState:UIControlStateNormal];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"showHomeWebView"]) {
-        _teamURL = [self retrieveTeamURL:_match.homeTeamName];
-        ARWebViewController *wvc = (ARWebViewController *)segue.destinationViewController;
-        wvc.teamURL = _teamURL;
-    } else if ([segue.identifier isEqualToString:@"showAwayWebView"]) {
-        _teamURL = [self retrieveTeamURL:_match.awayTeamName];
-        ARWebViewController *wvc = (ARWebViewController *)segue.destinationViewController;
-        wvc.teamURL = _teamURL;
-    }
 }
 
 - (NSString *)retrieveTeamURL:(NSString *)teamName
@@ -250,6 +239,44 @@
     
     NSString *tempTeamURL = [NSString stringWithFormat:@"http://m.fifa.com/worldcup/teams/team=%@", [codeURLDictionary objectForKey:teamName]];
     return tempTeamURL;
+}
+
+- (void)updateTimer
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    [calendar setTimeZone:[NSTimeZone timeZoneWithName:@"America/Sao_Paulo"]];
+    NSDate *now = [NSDate date];
+    
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"MM-dd-yyyy hh:mma"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"America/Sao_Paulo"]];
+    NSDate *dateFromString = [dateFormatter dateFromString:_match.matchTime];
+    
+    if ([now compare:dateFromString] == NSOrderedAscending)
+    {   // now is earlier than kickOffDate
+        NSDateComponents *componentsDays = [calendar components:NSDayCalendarUnit
+                                                       fromDate:now
+                                                         toDate:dateFromString
+                                                        options:0];
+        _daysToGoLabel.text = [NSString stringWithFormat:@"%02ld", (long)(componentsDays.day)];
+        NSDateComponents *componentsHours = [calendar components:NSHourCalendarUnit
+                                                        fromDate:now
+                                                          toDate:dateFromString
+                                                         options:0];
+        _hoursToGoLabel.text = [NSString stringWithFormat:@"%02ld", (long)(componentsHours.hour%24)];
+        NSDateComponents *componentsMinutes = [calendar components:NSMinuteCalendarUnit
+                                                          fromDate:now
+                                                            toDate:dateFromString
+                                                           options:0];
+        _minutesToGoLabel.text = [NSString stringWithFormat:@"%02ld", (long)(componentsMinutes.minute%60)];
+        NSDateComponents *componentsSeconds = [calendar components:NSSecondCalendarUnit
+                                                          fromDate:now
+                                                            toDate:dateFromString
+                                                           options:0];
+        _secondsToGoLabel.text = [NSString stringWithFormat:@"%02ld", (long)(componentsSeconds.second%60)];
+    } else {
+        
+    }
 }
 
 @end

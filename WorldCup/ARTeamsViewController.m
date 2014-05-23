@@ -8,6 +8,7 @@
 
 #import "ARTeamsViewController.h"
 #import "ARCustomTableViewCell.h"
+#import "ARWebViewController.h"
 
 @interface ARTeamsViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -58,23 +59,65 @@
 {
     ARCustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
-    NSString *countryName = [[_tableArray objectAtIndex:[indexPath section]] objectAtIndex:[indexPath row]];
-    
-    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", countryName]];
-    cell.label.text = countryName;
+    NSString *teamName = [[_tableArray objectAtIndex:[indexPath section]] objectAtIndex:[indexPath row]];
+    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", teamName]];
+    [cell.textLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:17]];
+    cell.label.text = teamName;
 
     return cell;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"showWebView"]) {
+        NSIndexPath *indexPath = [_tableView indexPathForSelectedRow];
+        NSString *teamName = [[_tableArray objectAtIndex:[indexPath section]] objectAtIndex:[indexPath row]];
+        NSString *teamURL = [self retrieveTeamURL:teamName];
+
+        ARWebViewController *wvc = (ARWebViewController *)segue.destinationViewController;
+        wvc.teamURL = teamURL;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"disableSidebar" object:nil];
+    }
 }
-*/
+
+- (NSString *)retrieveTeamURL:(NSString *)teamName
+{
+    NSDictionary *codeURLDictionary = @{@"Brazil"               :@"43924",
+                                        @"Croatia"              :@"43938",
+                                        @"Mexico"               :@"43911",
+                                        @"Cameroon"             :@"43849",
+                                        @"Spain"                :@"43969",
+                                        @"Netherlands"          :@"43960",
+                                        @"Chile"                :@"43925",
+                                        @"Australia"            :@"43976",
+                                        @"Colombia"             :@"43926",
+                                        @"Greece"               :@"43949",
+                                        @"Ivory Coast"          :@"43854",
+                                        @"Japan"                :@"43819",
+                                        @"Uruguay"              :@"43930",
+                                        @"Costa Rica"           :@"43901",
+                                        @"England"              :@"43942",
+                                        @"Italy"                :@"43954",
+                                        @"Switzerland"          :@"43971",
+                                        @"Ecuador"              :@"43927",
+                                        @"France"               :@"43946",
+                                        @"Honduras"             :@"43909",
+                                        @"Argentina"            :@"43922",
+                                        @"Bosnia Herzegovina"   :@"44037",
+                                        @"Iran"                 :@"43817",
+                                        @"Nigeria"              :@"43876",
+                                        @"Germany"              :@"43948",
+                                        @"Portugal"             :@"43963",
+                                        @"Ghana"                :@"43860",
+                                        @"USA"                  :@"43921",
+                                        @"Belgium"              :@"43935",
+                                        @"Algeria"              :@"43843",
+                                        @"Russia"               :@"43965",
+                                        @"Korea Republic"       :@"43822"};
+    
+    NSString *tempTeamURL = [NSString stringWithFormat:@"http://m.fifa.com/worldcup/teams/team=%@", [codeURLDictionary objectForKey:teamName]];
+    return tempTeamURL;
+}
 
 @end

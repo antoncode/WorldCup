@@ -164,7 +164,7 @@
     UINavigationController *finalNavControl = [[UINavigationController alloc] initWithRootViewController:finalViewController];
     [finalNavControl setNavigationBarHidden:NO animated:NO];
     
-    _arrayOfViewControllers = @[countdownNavControl, teamsNavControl, groupANavControl, groupBNavControl, groupCNavControl, groupDNavControl, groupENavControl, groupFNavControl, groupGNavControl, groupHNavControl, finalNavControl];
+    _arrayOfViewControllers = @[countdownNavControl, teamsNavControl, groupANavControl, groupBNavControl, groupCNavControl, groupDNavControl, groupENavControl, groupFNavControl, groupGNavControl, groupHNavControl, roundOfSixteenNavControl, quarterFinalNavControl, semiFinalNavControl, finalNavControl];
     
     _topViewController = _arrayOfViewControllers[0];
     
