@@ -10,8 +10,7 @@
 
 @interface ARCustomTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UILabel *label;
-
+@property (weak, nonatomic) IBOutlet UIImageView *teamFlagImageView;
+@property (weak, nonatomic) IBOutlet UILabel *teamNameLabel;
 
 @end

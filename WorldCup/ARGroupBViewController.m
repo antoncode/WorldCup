@@ -41,7 +41,6 @@
 {
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"enableSidebar" object:nil];
-
 }
 
 #pragma mark - Table View data source
@@ -60,7 +59,6 @@
     cell.textLabel.text = match.matchString;
     cell.detailTextLabel.text = [self printMatchTime:match.matchTime];
 
-    
     return cell;
 }
 
@@ -78,7 +76,6 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"disableSidebar" object:nil];
     }
 }
-
 
 #pragma mark - Helper methods
 

@@ -80,7 +80,6 @@
     }
 }
 
-
 #pragma mark - Helper methods
 
 - (void)createGroupA

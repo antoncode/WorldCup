@@ -10,7 +10,6 @@
 
 @interface ARKnockoutDetailViewController ()
 
-@property (nonatomic, strong) NSDate *dateFromString1, *dateFromString2;
 @property (weak, nonatomic) IBOutlet UILabel *matchStringLabel;
 @property (weak, nonatomic) IBOutlet UIButton *yourMatchTimeButton;
 @property (nonatomic, strong) IBOutlet UIDatePicker *popUpDatePicker;
@@ -102,7 +101,7 @@
     UILocalNotification* localNotification = [[UILocalNotification alloc] init];
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     localNotification.fireDate = _popUpDatePicker.date;
-    localNotification.alertBody = [NSString stringWithFormat:@"%@ beggining soon!", _match.matchString];
+    localNotification.alertBody = [NSString stringWithFormat:@"Match reminder: %@", _match.matchString];
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     
@@ -131,6 +130,13 @@
         [_setReminderButton setFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 44)];
         [_popUpDatePicker setFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 100)];
         [_cancelReminderButton setFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 44)];
+        
+        NSDate *dateFromString = [NSDate new];
+        NSDateFormatter *dateFormatter = [NSDateFormatter new];
+        [dateFormatter setDateFormat:@"MM-dd-yyyy hh:mma"];
+        [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"America/Sao_Paulo"]];
+        dateFromString = [dateFormatter dateFromString:_match.matchTime];
+        _popUpDatePicker.date = dateFromString;
     }];
 }
 
@@ -141,11 +147,11 @@
     NSDateFormatter *dateFormatter1 = [NSDateFormatter new];
     [dateFormatter1 setDateFormat:@"MM-dd-yyyy hh:mma"];
     [dateFormatter1 setTimeZone:[NSTimeZone timeZoneWithName:@"America/Sao_Paulo"]];
-    _dateFromString1 = [dateFormatter1 dateFromString:_match.matchTime];
+    NSDate *dateFromString = [dateFormatter1 dateFromString:_match.matchTime];
 
     NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateFormat:@"MMMM dd h:mma"];
-    NSString *stringFromDate = [formatter stringFromDate:_dateFromString1];
+    NSString *stringFromDate = [formatter stringFromDate:dateFromString];
     
     [_yourMatchTimeButton setTitle:stringFromDate forState:UIControlStateNormal];
 }
@@ -190,6 +196,5 @@
         _secondsToGoLabel.text = @"00";
     }
 }
-
 
 @end

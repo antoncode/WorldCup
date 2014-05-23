@@ -79,7 +79,7 @@
     NSDate *finalMatchDate = [calendar dateFromComponents:finalMatchComponents];
     
     if ([now compare:kickOffDate] == NSOrderedAscending)
-    {   // now is earlier than kickOffDate
+    {   // now is earlier than first match date
         NSDateComponents *componentsDays = [calendar components:NSDayCalendarUnit
                                                        fromDate:now
                                                          toDate:kickOffDate
@@ -104,7 +104,7 @@
         _untilLabel.text = @"to first match";
         
     } else if (([now compare:kickOffDate] == NSOrderedDescending) && ([now compare:finalMatchDate] == NSOrderedAscending))
-    {   // now is later than kickOffDate and before finalMatchDate
+    {   // now is later than kickOffDate and before final match date
         NSDateComponents *componentsDays = [calendar components:NSDayCalendarUnit
                                                        fromDate:now
                                                          toDate:finalMatchDate

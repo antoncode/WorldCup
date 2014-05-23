@@ -11,19 +11,17 @@
 
 @interface ARMatchDetailViewController ()
 
-@property (nonatomic, strong) UIPanGestureRecognizer *panRecognizer;
 @property (weak, nonatomic) IBOutlet UIButton *teamOneButton;
 @property (weak, nonatomic) IBOutlet UIButton *teamTwoButton;
-@property (weak, nonatomic) IBOutlet UIImageView *teamOneImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *teamTwoImageView;
 @property (weak, nonatomic) IBOutlet UIButton *yourMatchTimeButton;
+@property (nonatomic, strong) IBOutlet UIDatePicker *popUpDatePicker;
+@property (nonatomic, strong) IBOutlet UIButton *setReminderButton;
+@property (nonatomic, strong) IBOutlet UIButton *cancelReminderButton;
 @property (weak, nonatomic) IBOutlet UILabel *daysToGoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *hoursToGoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *minutesToGoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *secondsToGoLabel;
-@property (nonatomic, strong) IBOutlet UIDatePicker *popUpDatePicker;
-@property (nonatomic, strong) IBOutlet UIButton *setReminderButton;
-@property (nonatomic, strong) IBOutlet UIButton *cancelReminderButton;
+
 @property (nonatomic, strong) NSString *teamURL;
 
 @end
@@ -52,13 +50,6 @@
     
     NSTimer *timer = [NSTimer new];
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    
-    [self.view removeGestureRecognizer:_panRecognizer];
 }
 
 #pragma mark - Reminder methods
@@ -114,7 +105,7 @@
     UILocalNotification* localNotification = [[UILocalNotification alloc] init];
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     localNotification.fireDate = _popUpDatePicker.date;
-    localNotification.alertBody = [NSString stringWithFormat:@"%@ beggining soon!", _match.matchString];
+    localNotification.alertBody = [NSString stringWithFormat:@"Match Reminder: %@", _match.matchString];
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     
@@ -143,6 +134,13 @@
         [_setReminderButton setFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 44)];
         [_popUpDatePicker setFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 100)];
         [_cancelReminderButton setFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 44)];
+        
+        NSDate *dateFromString = [NSDate new];
+        NSDateFormatter *dateFormatter = [NSDateFormatter new];
+        [dateFormatter setDateFormat:@"MM-dd-yyyy hh:mma"];
+        [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"America/Sao_Paulo"]];
+        dateFromString = [dateFormatter dateFromString:_match.matchTime];
+        _popUpDatePicker.date = dateFromString;
     }];
 }
 

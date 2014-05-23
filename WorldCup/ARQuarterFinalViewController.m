@@ -43,7 +43,6 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"enableSidebar" object:nil];
 }
 
-
 #pragma mark - Table View data source
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -78,7 +77,6 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"disableSidebar" object:nil];
     }
 }
-
 
 #pragma mark - Helper methods
 

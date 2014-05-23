@@ -78,7 +78,6 @@
     }
 }
 
-
 #pragma mark - Helper methods
 
 - (void)createArrayOfMatchStrings

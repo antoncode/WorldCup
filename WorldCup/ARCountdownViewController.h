@@ -10,6 +10,4 @@
 
 @interface ARCountdownViewController : UIViewController
 
-@property (nonatomic) BOOL isOpen;
-
 @end

@@ -41,7 +41,6 @@
 {
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"enableSidebar" object:nil];
-    
 }
 
 #pragma mark - Table View data source
@@ -77,7 +76,6 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"disableSidebar" object:nil];
     }
 }
-
 
 #pragma mark - Helper methods
 

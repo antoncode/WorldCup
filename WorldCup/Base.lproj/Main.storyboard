@@ -182,8 +182,8 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="imageView" destination="8Rv-XT-Ybz" id="Vgj-jK-9ei"/>
-                                            <outlet property="label" destination="Uto-PV-Rpa" id="VHz-aa-F8E"/>
+                                            <outlet property="teamFlagImageView" destination="8Rv-XT-Ybz" id="sCH-Ww-8Dr"/>
+                                            <outlet property="teamNameLabel" destination="Uto-PV-Rpa" id="L1E-gY-Igj"/>
                                             <segue destination="oaC-c0-lhO" kind="push" identifier="showWebView" id="vbc-57-0Gq"/>
                                         </connections>
                                     </tableViewCell>
@@ -1249,7 +1249,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="Oa4-Vk-MWr"/>
-        <segue reference="e32-Ng-ga5"/>
         <segue reference="aeF-Ch-pKF"/>
+        <segue reference="vbc-57-0Gq"/>
     </inferredMetricsTieBreakers>
 </document>

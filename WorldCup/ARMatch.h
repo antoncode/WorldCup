@@ -11,6 +11,5 @@
 @interface ARMatch : NSObject
 
 @property (nonatomic, strong) NSString *homeTeamName, *awayTeamName, *matchString, *matchTime;
-//@property (nonatomic, strong) NSDate *time, *date;
 
 @end

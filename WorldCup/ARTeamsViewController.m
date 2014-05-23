@@ -40,6 +40,20 @@
     _tableArray = [NSArray arrayWithObjects:groupAArray, groupBArray, groupCArray, groupDArray, groupEArray, groupFArray, groupGArray, groupHArray, nil];
 }
 
+#pragma mark - Table View Data Source
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ARCustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    
+    NSString *teamName = [[_tableArray objectAtIndex:[indexPath section]] objectAtIndex:[indexPath row]];
+    cell.teamFlagImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", teamName]];
+    [cell.textLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:17]];
+    cell.teamNameLabel.text = teamName;
+    
+    return cell;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return _groupsArray.count;
@@ -55,17 +69,7 @@
     return [[_tableArray objectAtIndex:section] count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    ARCustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    
-    NSString *teamName = [[_tableArray objectAtIndex:[indexPath section]] objectAtIndex:[indexPath row]];
-    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", teamName]];
-    [cell.textLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:17]];
-    cell.label.text = teamName;
-
-    return cell;
-}
+#pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -76,10 +80,10 @@
 
         ARWebViewController *wvc = (ARWebViewController *)segue.destinationViewController;
         wvc.teamURL = teamURL;
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"disableSidebar" object:nil];
     }
 }
+
+#pragma mark - Helper methods
 
 - (NSString *)retrieveTeamURL:(NSString *)teamName
 {
