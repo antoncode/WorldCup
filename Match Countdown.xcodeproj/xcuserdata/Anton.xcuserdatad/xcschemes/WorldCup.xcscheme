@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3A40E9BD190EE5AB00B6AB03"
-               BuildableName = "WorldCup.app"
+               BuildableName = "Match Countdown.app"
                BlueprintName = "WorldCup"
-               ReferencedContainer = "container:WorldCup.xcodeproj">
+               ReferencedContainer = "container:Match Countdown.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "3A40E9DE190EE5AB00B6AB03"
                BuildableName = "WorldCupTests.xctest"
                BlueprintName = "WorldCupTests"
-               ReferencedContainer = "container:WorldCup.xcodeproj">
+               ReferencedContainer = "container:Match Countdown.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3A40E9BD190EE5AB00B6AB03"
-            BuildableName = "WorldCup.app"
+            BuildableName = "Match Countdown.app"
             BlueprintName = "WorldCup"
-            ReferencedContainer = "container:WorldCup.xcodeproj">
+            ReferencedContainer = "container:Match Countdown.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3A40E9BD190EE5AB00B6AB03"
-            BuildableName = "WorldCup.app"
+            BuildableName = "Match Countdown.app"
             BlueprintName = "WorldCup"
-            ReferencedContainer = "container:WorldCup.xcodeproj">
+            ReferencedContainer = "container:Match Countdown.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3A40E9BD190EE5AB00B6AB03"
-            BuildableName = "WorldCup.app"
+            BuildableName = "Match Countdown.app"
             BlueprintName = "WorldCup"
-            ReferencedContainer = "container:WorldCup.xcodeproj">
+            ReferencedContainer = "container:Match Countdown.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

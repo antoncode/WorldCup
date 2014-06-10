@@ -132,7 +132,7 @@
 		3A39A8C2191D7DC500315E05 /* Brazil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Brazil.png; sourceTree = "<group>"; };
 		3A39A8C3191D7DC500315E05 /* Cameroon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cameroon.png; sourceTree = "<group>"; };
 		3A39A8C4191D7DC500315E05 /* Croatia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Croatia.png; sourceTree = "<group>"; };
-		3A40E9BE190EE5AB00B6AB03 /* WorldCup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldCup.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A40E9BE190EE5AB00B6AB03 /* Match Countdown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Match Countdown.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A40E9C1190EE5AB00B6AB03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3A40E9C3190EE5AB00B6AB03 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3A40E9C5190EE5AB00B6AB03 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -333,7 +333,7 @@
 		3A40E9BF190EE5AB00B6AB03 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3A40E9BE190EE5AB00B6AB03 /* WorldCup.app */,
+				3A40E9BE190EE5AB00B6AB03 /* Match Countdown.app */,
 				3A40E9DF190EE5AB00B6AB03 /* WorldCupTests.xctest */,
 			);
 			name = Products;
@@ -451,7 +451,7 @@
 			);
 			name = WorldCup;
 			productName = WorldCup;
-			productReference = 3A40E9BE190EE5AB00B6AB03 /* WorldCup.app */;
+			productReference = 3A40E9BE190EE5AB00B6AB03 /* Match Countdown.app */;
 			productType = "com.apple.product-type.application";
 		};
 		3A40E9DE190EE5AB00B6AB03 /* WorldCupTests */ = {
@@ -490,7 +490,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3A40E9B9190EE5AB00B6AB03 /* Build configuration list for PBXProject "WorldCup" */;
+			buildConfigurationList = 3A40E9B9190EE5AB00B6AB03 /* Build configuration list for PBXProject "Match Countdown" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -719,7 +719,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WorldCup/WorldCup-Prefix.pch";
 				INFOPLIST_FILE = "WorldCup/WorldCup-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Match Countdown";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -735,7 +735,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WorldCup/WorldCup-Prefix.pch";
 				INFOPLIST_FILE = "WorldCup/WorldCup-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Match Countdown";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -784,7 +784,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3A40E9B9190EE5AB00B6AB03 /* Build configuration list for PBXProject "WorldCup" */ = {
+		3A40E9B9190EE5AB00B6AB03 /* Build configuration list for PBXProject "Match Countdown" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A40E9EE190EE5AB00B6AB03 /* Debug */,
